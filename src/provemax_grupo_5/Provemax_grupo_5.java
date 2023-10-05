@@ -21,10 +21,12 @@ public class Provemax_grupo_5 {
     public static void main(String[] args) {
         //Conexion.getconexion();
        
-       Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450");
+       //Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
        ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
-        pro.modificarProveedor(juan);
+       // pro.modificarProveedor(juan);
+       //pro.activarProveedor(1);
+       pro.eliminarProveedor(1);
 //       Alumno juan=new Alumno(5,22312312,"Julio","Cezar",LocalDate.of(1999, 5, 27),true);
 //       AlumnoData alu=new AlumnoData();
 //       alu.guardarAlumno(juan);
