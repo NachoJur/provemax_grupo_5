@@ -5,8 +5,7 @@
         <group>
             <file>file:/D:/nacho/Documents/NetBeansProjects/provemax_grupo_5/src/provemax_grupo_5/Entidades/Proveedor.java</file>
             <file>file:/D:/nacho/Documents/NetBeansProjects/provemax_grupo_5/src/provemax_grupo_5/Provemax_grupo_5.java</file>
-            <file>file:/D:/nacho/Documents/NetBeansProjects/provemax_grupo_5/src/provemax_grupo_5/Entidades/Producto.java</file>
-            <file>file:/D:/nacho/Documents/NetBeansProjects/provemax_grupo_5/src/provemax_grupo_5/Entidades/Compra.java</file>
+            <file>file:/D:/nacho/Documents/NetBeansProjects/provemax_grupo_5/src/provemax_grupo_5/AccesoADatos/Conexion.java</file>
         </group>
     </open-files>
 </project-private>
