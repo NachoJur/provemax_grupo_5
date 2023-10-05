@@ -45,5 +45,21 @@ public class ProveedorData {
         }
         
     }
+    public void modificarProveedor(Proveedor proveedor) {
+       String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ? WHERE idProveedor = ?";
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+           ps.setString(1, proveedor.getRazonSocial());
+           ps.setString(2, proveedor.getDomicilio());
+           ps.setString(3, proveedor.getTelefono());
+           ps.setInt(4,proveedor.getIdProveedor());
+           int exito = ps.executeUpdate();
+           if (exito == 1) {
+               JOptionPane.showMessageDialog(null, "proveedor modificado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedores: " + ex.getMessage());
+        }
+    }
     
 }
