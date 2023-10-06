@@ -21,13 +21,23 @@ public class Provemax_grupo_5 {
     public static void main(String[] args) {
         //Conexion.getconexion();
        
-       Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450");
+       //Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
        ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
-        pro.modificarProveedor(juan);
-//       Alumno juan=new Alumno(5,22312312,"Julio","Cezar",LocalDate.of(1999, 5, 27),true);
-//       AlumnoData alu=new AlumnoData();
-//       alu.guardarAlumno(juan);
+       // pro.modificarProveedor(juan);
+       //pro.activarProveedor(1);
+      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
+      if(proveedorEncontrado!=null){
+          System.out.println("razonsocial "+proveedorEncontrado.getRazonSocial());
+      }
+       //pro.eliminarProveedor(1);
+//    Alumno alumnoEncontrado=alu.buscarAlumnopordni(22312312);
+//    if(alumnoEncontrado!=null){
+//        System.out.println("DNI: "+alumnoEncontrado.getDNI());
+//        System.out.println("Apellido: "+alumnoEncontrado.getApellido());
+//        System.out.println("Nombre: "+alumnoEncontrado.getNombre());
+//        System.out.println("fechaNacimiento: "+alumnoEncontrado.getFechaNac());
+//    }else{
         
     }
     

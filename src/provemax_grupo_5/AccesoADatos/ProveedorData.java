@@ -26,12 +26,13 @@ public class ProveedorData {
         con=Conexion.getconexion();
     }
     public void guardarProveedor(Proveedor proveedor){
-      String sql="INSERT INTO proveedor (razonSocial, domicilio, telefono)"+"VALUES(?,?,?)";
+      String sql="INSERT INTO proveedor (razonSocial, domicilio, telefono,estado)"+"VALUES(?,?,?,?)";
       try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,proveedor.getRazonSocial());
             ps.setString(2, proveedor.getDomicilio());
             ps.setString(3, proveedor.getTelefono());
+            ps.setBoolean(4,proveedor.isEstado());
             ps.executeUpdate();
             ResultSet rs=ps.getGeneratedKeys();
             if (rs.next()){
@@ -46,13 +47,14 @@ public class ProveedorData {
         
     }
     public void modificarProveedor(Proveedor proveedor) {
-       String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ? WHERE idProveedor = ?";
+       String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ?, estado = 0 WHERE idProveedor = ?";
        try {
            PreparedStatement ps = con.prepareStatement(sql);
            ps.setString(1, proveedor.getRazonSocial());
            ps.setString(2, proveedor.getDomicilio());
            ps.setString(3, proveedor.getTelefono());
-           ps.setInt(4,proveedor.getIdProveedor());
+           ps.setBoolean(4,proveedor.isEstado());
+           ps.setInt(5,proveedor.getIdProveedor());
            int exito = ps.executeUpdate();
            if (exito == 1) {
                JOptionPane.showMessageDialog(null, "proveedor modificado");
@@ -60,6 +62,60 @@ public class ProveedorData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedores: " + ex.getMessage());
         }
+    }
+    
+    public void eliminarProveedor(int idProveedor){
+        String sql = "UPDATE proveedor SET estado = 0 WHERE idProveedor = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+            int fila = ps.executeUpdate();
+            
+            if (fila == 1){
+                JOptionPane.showMessageDialog(null,"Se elimino el proveedor");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla proovedores");
+        }
+    }
+    public void activarProveedor(int idProveedor){
+        String sql = "UPDATE proveedor SET estado = 1 WHERE idProveedor = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProveedor);
+            int fila = ps.executeUpdate();
+            
+            if (fila == 1){
+                JOptionPane.showMessageDialog(null,"Se reactivo el proveedor");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla proovedores");
+        }
+    }
+    public Proveedor buscarProveedor (int id){
+        String sql="SELECT razonSocial, domicilio, telefono,estado FROM proveedor WHERE idProveedor = ? AND estado = 1";
+        Proveedor proveedor=null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()){
+                proveedor=new Proveedor();
+                proveedor.setIdProveedor(id);
+                proveedor.setRazonSocial(rs.getString("razonSocial"));
+                proveedor.setDomicilio(rs.getString("domicilio"));
+                proveedor.setTelefono(rs.getString("telefono"));
+                proveedor.setEstado(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "no existe ese proveedor");
+            }
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedores: " + ex.getMessage());
+        }
+        return proveedor;
     }
     
 }
