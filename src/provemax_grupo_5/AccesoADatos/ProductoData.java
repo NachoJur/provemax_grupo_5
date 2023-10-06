@@ -70,14 +70,14 @@ public class ProductoData {
     }
 
     public Producto buscarProducto(int idProducto) {
-        
+
         String sql = "SELECT nombreProducto, descripcion, precioActual, stock, FROM producto WHERE idProducto = ? AND estado = 1";
-       Producto producto = null;
+        Producto producto = null;
         try {
-             PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idProducto);
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(idProducto);
@@ -86,7 +86,7 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-            }else{
+            } else {
                 mensaje("No existe ese producto");
             }
             ps.close();
@@ -95,15 +95,15 @@ public class ProductoData {
         }
         return producto;
     }
-    
-    public void eliminarProducto(int idProducto){
+
+    public void eliminarProducto(int idProducto) {
         String sql = "UPDATE producto SET estado = 0 WHERE idProducto = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idProducto);
             int fila = ps.executeUpdate();
-            
-            if (fila == 1){
+
+            if (fila == 1) {
                 mensaje("Se elimino el producto");
             }
             ps.close();
@@ -111,14 +111,14 @@ public class ProductoData {
             mensaje("Error al acceder a la tabla productos");
         }
     }
-    
-    public List<Producto> listarProductos(){
+
+    public List<Producto> listarProductos() {
         List<Producto> productos = new ArrayList<Producto>();
         try {
-        String sql = "SELECT * FROM producto WHERE estado = 1";
-         PreparedStatement ps = con.prepareStatement(sql);
+            String sql = "SELECT * FROM producto WHERE estado = 1";
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Producto producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));
@@ -132,6 +132,30 @@ public class ProductoData {
         } catch (SQLException ex) {
             mensaje("Error al acceder a la tabla de productos");
         }
-          return productos;
+        return productos;
+    }
+
+    public void consultarStock(int idProducto) {
+        int stock = 0;
+        String nombreProducto = "";
+        String sql = "SELECT stock, nombreProducto FROM producto WHERE idProducto = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idProducto);// Se asigna el valor del idProducto al primer parámetro de la sentencia SQL
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) { // Si hay un resultado, se asignan los valores a las variables
+                stock = rs.getInt("stock");
+                nombreProducto = rs.getString("nombreProducto");
+            }
+            ps.close();
+            
+            if (stock < 3) { // Se verifica si el stock es menor a 3
+                mensaje("El electrodomestico " + nombreProducto + " tiene un stock por debajo del minimo establecido: " + stock + " unidades");
+            }
+        } catch (SQLException ex) {
+            mensaje("Error al acceder a la tabla de productos");
+        }
+
     }
 }
