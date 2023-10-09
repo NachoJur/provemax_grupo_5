@@ -25,20 +25,26 @@ public class Provemax_grupo_5 {
        ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
        // pro.modificarProveedor(juan);
-       //pro.activarProveedor(1);
-      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
-      if(proveedorEncontrado!=null){
-          System.out.println("razonsocial "+proveedorEncontrado.getRazonSocial());
-      }
+       //pro.activarProveedor(2);
+//      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
+//      if(proveedorEncontrado!=null){
+//          System.out.println("razonsocial "+proveedorEncontrado.getRazonSocial());
+//          System.out.println("domicilio "+proveedorEncontrado.getDomicilio());
+//          System.out.println("telefono "+proveedorEncontrado.getTelefono());
+//      }
        //pro.eliminarProveedor(1);
-//    Alumno alumnoEncontrado=alu.buscarAlumnopordni(22312312);
-//    if(alumnoEncontrado!=null){
-//        System.out.println("DNI: "+alumnoEncontrado.getDNI());
-//        System.out.println("Apellido: "+alumnoEncontrado.getApellido());
-//        System.out.println("Nombre: "+alumnoEncontrado.getNombre());
-//        System.out.println("fechaNacimiento: "+alumnoEncontrado.getFechaNac());
-//    }else{
-        
+       for (Proveedor proveedor:(pro.listarProveedores())){
+           System.out.println("razonsocial "+proveedor.getRazonSocial());
+          System.out.println("domicilio "+proveedor.getDomicilio());
+         System.out.println("telefono "+proveedor.getTelefono());
+       }
+
     }
+    //        for (Alumno alumno:alu.listarAlumno()){
+//            System.out.println(alumno.getDNI());
+//            System.out.println(alumno.getApellido());
+//            System.out.println(alumno.getNombre());
+//            System.out.println(alumno.getFechaNac());
+//        }
     
 }
