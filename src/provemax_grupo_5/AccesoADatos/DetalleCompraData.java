@@ -27,11 +27,11 @@ public class DetalleCompraData {
     }
     
     public void mostrarCompras(Compra compra){
-        String sql = "INSERT INTO compra (idCompra, proveedor, fecha)" + "VALUES(?,?,?)";
+        String sql = "INSERT INTO detallecompra (cantidad,precioCosto,idCompra,idProducto)" + "VALUES(?,?,?,?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,compra.getIdCompra());
-            ps.setObject(2,compra.getProveedor());
+            ps.setInt(2,compra.getProveedor().getIdProveedor());
             ps.setDate(3, Date.valueOf(compra.getFecha()));            
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
