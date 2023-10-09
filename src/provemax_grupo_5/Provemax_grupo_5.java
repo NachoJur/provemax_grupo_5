@@ -5,8 +5,11 @@
  */
 package provemax_grupo_5;
 
+import java.time.LocalDate;
+import provemax_grupo_5.AccesoADatos.CompraData;
 import provemax_grupo_5.AccesoADatos.Conexion;
 import provemax_grupo_5.AccesoADatos.ProveedorData;
+import provemax_grupo_5.Entidades.Compra;
 import provemax_grupo_5.Entidades.Proveedor;
 
 /**
@@ -21,8 +24,8 @@ public class Provemax_grupo_5 {
     public static void main(String[] args) {
         //Conexion.getconexion();
        
-       //Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
-       ProveedorData pro= new ProveedorData();
+       Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
+      ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
        // pro.modificarProveedor(juan);
        //pro.activarProveedor(2);
@@ -33,18 +36,17 @@ public class Provemax_grupo_5 {
 //          System.out.println("telefono "+proveedorEncontrado.getTelefono());
 //      }
        //pro.eliminarProveedor(1);
-       for (Proveedor proveedor:(pro.listarProveedores())){
-           System.out.println("razonsocial "+proveedor.getRazonSocial());
-          System.out.println("domicilio "+proveedor.getDomicilio());
-         System.out.println("telefono "+proveedor.getTelefono());
-       }
+//       for (Proveedor proveedor:(pro.listarProveedores())){
+//           System.out.println("razonsocial "+proveedor.getRazonSocial());
+//          System.out.println("domicilio "+proveedor.getDomicilio());
+//         System.out.println("telefono "+proveedor.getTelefono());
+//       }
+        Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
+        CompraData cd= new CompraData();
+        cd.registrarCompra(com);
+
 
     }
-    //        for (Alumno alumno:alu.listarAlumno()){
-//            System.out.println(alumno.getDNI());
-//            System.out.println(alumno.getApellido());
-//            System.out.println(alumno.getNombre());
-//            System.out.println(alumno.getFechaNac());
-//        }
+  
     
 }

@@ -38,5 +38,8 @@ public class DetalleCompraData {
         } catch (SQLException ex) {
             Logger.getLogger(DetalleCompraData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+        
     }
 }
