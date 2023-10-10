@@ -39,9 +39,13 @@ public class Provemax extends javax.swing.JFrame {
             }
         };
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jMCompra = new javax.swing.JMenu();
+        jMICompraProductos = new javax.swing.JMenuItem();
+        jMIDetalle = new javax.swing.JMenuItem();
+        jMProductos = new javax.swing.JMenu();
+        jMIListProductos = new javax.swing.JMenuItem();
+        jMProveedores = new javax.swing.JMenu();
+        jMIRegistroProv = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,14 +60,29 @@ public class Provemax extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Compra");
-        jMenuBar1.add(jMenu1);
+        jMCompra.setText("Compra");
 
-        jMenu2.setText("Productos");
-        jMenuBar1.add(jMenu2);
+        jMICompraProductos.setText("Compra de Productos");
+        jMCompra.add(jMICompraProductos);
 
-        jMenu3.setText("Proveedores");
-        jMenuBar1.add(jMenu3);
+        jMIDetalle.setText("Detalle de Compra");
+        jMCompra.add(jMIDetalle);
+
+        jMenuBar1.add(jMCompra);
+
+        jMProductos.setText("Productos");
+
+        jMIListProductos.setText("Lista de Productos");
+        jMProductos.add(jMIListProductos);
+
+        jMenuBar1.add(jMProductos);
+
+        jMProveedores.setText("Proveedores");
+
+        jMIRegistroProv.setText("Registro de Proveedores");
+        jMProveedores.add(jMIRegistroProv);
+
+        jMenuBar1.add(jMProveedores);
 
         setJMenuBar(jMenuBar1);
 
@@ -118,9 +137,13 @@ public class Provemax extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMCompra;
+    private javax.swing.JMenuItem jMICompraProductos;
+    private javax.swing.JMenuItem jMIDetalle;
+    private javax.swing.JMenuItem jMIListProductos;
+    private javax.swing.JMenuItem jMIRegistroProv;
+    private javax.swing.JMenu jMProductos;
+    private javax.swing.JMenu jMProveedores;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

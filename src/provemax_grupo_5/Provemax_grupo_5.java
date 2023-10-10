@@ -5,6 +5,7 @@
  */
 package provemax_grupo_5;
 
+
 import java.time.LocalDate;
 import provemax_grupo_5.AccesoADatos.CompraData;
 import provemax_grupo_5.AccesoADatos.Conexion;
@@ -26,7 +27,8 @@ public class Provemax_grupo_5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Conexion.getconexion();
+
+        Conexion.getconexion();
        
        Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
       //ProveedorData pro= new ProveedorData();
@@ -57,6 +59,26 @@ public class Provemax_grupo_5 {
            
 
     }
-  
-    
+    Proveedor juan=new Proveedor(1,"Samsung","Av.Cordoba 1540","450450",true);
+    ProveedorData pro= new ProveedorData();
+    //pro.guardarProveedor(juan);
+//        pro.modificarProveedor(juan);
+//        pro.activarProveedor(2);
+        
+//        Proveedor proveedorEncontrado=pro.buscarProveedor(1);
+//        if(proveedorEncontrado!=null){
+//            System.out.println("razonsocial "+proveedorEncontrado.getRazonSocial());
+//            System.out.println("domicilio "+proveedorEncontrado.getDomicilio());
+//            System.out.println("telefono "+proveedorEncontrado.getTelefono());
+//        }
+//        pro.eliminarProveedor(1);
+//        for (Proveedor proveedor:(pro.listarProveedores())){
+//            System.out.println("razonsocial " + proveedor.getRazonSocial());
+//            System.out.println("domicilio " + proveedor.getDomicilio());
+//            System.out.println("telefono " + proveedor.getTelefono());
+//        }
+//        Compra k = new Compra(1,);
+//        CompraData h = new CompraData();
 }
+
+
