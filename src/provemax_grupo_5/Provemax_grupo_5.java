@@ -8,9 +8,11 @@ package provemax_grupo_5;
 import java.time.LocalDate;
 import provemax_grupo_5.AccesoADatos.CompraData;
 import provemax_grupo_5.AccesoADatos.Conexion;
+import provemax_grupo_5.AccesoADatos.DetalleCompraData;
 import provemax_grupo_5.AccesoADatos.ProductoData;
 import provemax_grupo_5.AccesoADatos.ProveedorData;
 import provemax_grupo_5.Entidades.Compra;
+import provemax_grupo_5.Entidades.DetalleCompra;
 import provemax_grupo_5.Entidades.Proveedor;
 import provemax_grupo_5.Entidades.Producto;
 
@@ -26,7 +28,7 @@ public class Provemax_grupo_5 {
     public static void main(String[] args) {
         //Conexion.getconexion();
        
-       //Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
+       Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
       //ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
        // pro.modificarProveedor(juan);
@@ -43,12 +45,16 @@ public class Provemax_grupo_5 {
 //          System.out.println("domicilio "+proveedor.getDomicilio());
 //         System.out.println("telefono "+proveedor.getTelefono());
 //       }
-//        Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
+        Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
 //        CompraData cd= new CompraData();
 //        cd.registrarCompra(com);
             Producto pro=new Producto(1,"POLLOFRITO","comida comestible",9.99,5,true);
-            ProductoData pd=new ProductoData();
-            pd.guardarProducto(pro);
+            //ProductoData pd=new ProductoData();
+           // pd.guardarProducto(pro);
+           DetalleCompra det= new DetalleCompra(1,9.99,com,pro,true);
+           DetalleCompraData dcd=new DetalleCompraData();
+           dcd.agregarDetallecompra(det);
+           
 
     }
   

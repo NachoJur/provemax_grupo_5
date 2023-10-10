@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import provemax_grupo_5.Entidades.Compra;
+import provemax_grupo_5.Entidades.DetalleCompra;
 
 /**
  *
@@ -26,20 +28,25 @@ public class DetalleCompraData {
         con=Conexion.getconexion();
     }
     
-    public void mostrarCompras(Compra compra){
-        String sql = "INSERT INTO detallecompra (cantidad,precioCosto,idCompra,idProducto)" + "VALUES(?,?,?,?)";
+    public void agregarDetallecompra(DetalleCompra detalleCompra){
+        String sql = "INSERT INTO detallecompra (cantidad,precioCosto,idCompra,idProducto,estado)" + "VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,compra.getIdCompra());
-            ps.setInt(2,compra.getProveedor().getIdProveedor());
-            ps.setDate(3, Date.valueOf(compra.getFecha()));            
+            ps.setInt(1,detalleCompra.getCantidad());
+            ps.setDouble(2,detalleCompra.getPrecioCosto());
+            ps.setInt(3,detalleCompra.getCompra().getIdCompra());
+            ps.setInt(4,detalleCompra.getProducto().getIdProducto());
+            ps.setBoolean(5,detalleCompra.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()){
+                
+                detalleCompra.setIdDetalle(rs.getInt(1));
+                JOptionPane.showMessageDialog(null,"detalle de compra agregada");
+            }
+            ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DetalleCompraData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"error al acceder al detalle compra"+ex.getMessage());
         }
-        
-        
-        
     }
 }
