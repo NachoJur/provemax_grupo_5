@@ -39,13 +39,13 @@ public class Provemax extends javax.swing.JFrame {
             }
         };
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMCompra = new javax.swing.JMenu();
+        jMICompraProductos = new javax.swing.JMenuItem();
+        jMIDetalle = new javax.swing.JMenuItem();
+        jMProductos = new javax.swing.JMenu();
+        jMIListProductos = new javax.swing.JMenuItem();
+        jMProveedores = new javax.swing.JMenu();
+        jMIRegistroProv = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,29 +60,29 @@ public class Provemax extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Compra");
+        jMCompra.setText("Compra");
 
-        jMenuItem1.setText("Compra de Productos");
-        jMenu1.add(jMenuItem1);
+        jMICompraProductos.setText("Compra de Productos");
+        jMCompra.add(jMICompraProductos);
 
-        jMenuItem2.setText("Detalle de Compra");
-        jMenu1.add(jMenuItem2);
+        jMIDetalle.setText("Detalle de Compra");
+        jMCompra.add(jMIDetalle);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMCompra);
 
-        jMenu2.setText("Productos");
+        jMProductos.setText("Productos");
 
-        jMenuItem3.setText("Lista de Productos");
-        jMenu2.add(jMenuItem3);
+        jMIListProductos.setText("Lista de Productos");
+        jMProductos.add(jMIListProductos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMProductos);
 
-        jMenu3.setText("Proveedores");
+        jMProveedores.setText("Proveedores");
 
-        jMenuItem4.setText("Registro de Proveedores");
-        jMenu3.add(jMenuItem4);
+        jMIRegistroProv.setText("Registro de Proveedores");
+        jMProveedores.add(jMIRegistroProv);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMProveedores);
 
         setJMenuBar(jMenuBar1);
 
@@ -137,13 +137,13 @@ public class Provemax extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMCompra;
+    private javax.swing.JMenuItem jMICompraProductos;
+    private javax.swing.JMenuItem jMIDetalle;
+    private javax.swing.JMenuItem jMIListProductos;
+    private javax.swing.JMenuItem jMIRegistroProv;
+    private javax.swing.JMenu jMProductos;
+    private javax.swing.JMenu jMProveedores;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     // End of variables declaration//GEN-END:variables
 }
