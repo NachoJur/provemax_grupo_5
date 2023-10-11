@@ -30,10 +30,10 @@ public class Provemax_grupo_5 {
 
         Conexion.getconexion();
        
-       Proveedor juan=new Proveedor(1,"los pollos hermanos","nuevo mexico","450450",true);
-      //ProveedorData pro= new ProveedorData();
+       Proveedor juan=new Proveedor(1,"los pollos hermanos","New Mexico","450450",true);
+     ProveedorData pro= new ProveedorData();
        //pro.guardarProveedor(juan);
-       // pro.modificarProveedor(juan);
+       pro.modificarProveedor(juan);
        //pro.activarProveedor(2);
 //      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
 //      if(proveedorEncontrado!=null){
@@ -47,20 +47,21 @@ public class Provemax_grupo_5 {
 //          System.out.println("domicilio "+proveedor.getDomicilio());
 //         System.out.println("telefono "+proveedor.getTelefono());
 //       }
-        Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
+        //Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
 //        CompraData cd= new CompraData();
 //        cd.registrarCompra(com);
-            Producto pro=new Producto(1,"POLLOFRITO","comida comestible",9.99,5,true);
+            //Producto pro=new Producto(1,"POLLOFRITO","comida comestible",9.99,5,true);
             //ProductoData pd=new ProductoData();
            // pd.guardarProducto(pro);
-           DetalleCompra det= new DetalleCompra(1,9.99,com,pro,true);
-           DetalleCompraData dcd=new DetalleCompraData();
-           dcd.agregarDetallecompra(det);
+           //DetalleCompra det= new DetalleCompra(3,2,18.99,com,pro,true);
+           //DetalleCompraData dcd=new DetalleCompraData();
+           //dcd.agregarDetallecompra(det);
+           //dcd.modificarDetallecompra(det);
            
 
     }
-    Proveedor juan=new Proveedor(1,"Samsung","Av.Cordoba 1540","450450",true);
-    ProveedorData pro= new ProveedorData();
+   // Proveedor juan=new Proveedor(1,"Samsung","Av.Cordoba 1540","450450",true);
+   // ProveedorData pro= new ProveedorData();
     //pro.guardarProveedor(juan);
 //        pro.modificarProveedor(juan);
 //        pro.activarProveedor(2);

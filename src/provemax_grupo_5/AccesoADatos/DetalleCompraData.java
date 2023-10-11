@@ -49,4 +49,22 @@ public class DetalleCompraData {
             JOptionPane.showMessageDialog(null,"error al acceder al detalle compra"+ex.getMessage());
         }
     }
+    public void modificarDetallecompra(DetalleCompra detalleCompra) {
+       String sql = "UPDATE detallecompra SET cantidad = ?, precioCosto = ?, idCompra = ?,idProducto = ? WHERE idDetalle = ?";
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+           ps.setInt(1,detalleCompra.getCantidad());
+           ps.setDouble(2,detalleCompra.getPrecioCosto());
+           ps.setInt(3,detalleCompra.getCompra().getIdCompra());
+           ps.setInt(4,detalleCompra.getProducto().getIdProducto());
+           
+           ps.setInt(5,detalleCompra.getIdDetalle());
+           int exito = ps.executeUpdate();
+           if (exito == 1) {
+               JOptionPane.showMessageDialog(null, "Detalle Compra modificado");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle Compra: " + ex.getMessage());
+        }
+    }
 }

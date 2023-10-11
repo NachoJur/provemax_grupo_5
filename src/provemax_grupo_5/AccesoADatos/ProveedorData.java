@@ -49,14 +49,14 @@ public class ProveedorData {
         
     }
     public void modificarProveedor(Proveedor proveedor) {
-       String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ?, estado = 0 WHERE idProveedor = ?";
+       String sql = "UPDATE proveedor SET razonSocial = ?, domicilio = ?, telefono = ?WHERE idProveedor = ?";
        try {
            PreparedStatement ps = con.prepareStatement(sql);
            ps.setString(1, proveedor.getRazonSocial());
            ps.setString(2, proveedor.getDomicilio());
            ps.setString(3, proveedor.getTelefono());
-           ps.setBoolean(4,proveedor.isEstado());
-           ps.setInt(5,proveedor.getIdProveedor());
+           
+           ps.setInt(4,proveedor.getIdProveedor());
            int exito = ps.executeUpdate();
            if (exito == 1) {
                JOptionPane.showMessageDialog(null, "proveedor modificado");
