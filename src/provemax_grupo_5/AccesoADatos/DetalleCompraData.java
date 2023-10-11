@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax_grupo_5.Entidades.Compra;
 import provemax_grupo_5.Entidades.DetalleCompra;
+import provemax_grupo_5.Entidades.Producto;
 
 /**
  *
@@ -23,6 +24,8 @@ import provemax_grupo_5.Entidades.DetalleCompra;
  */
 public class DetalleCompraData {
     private Connection con = null;
+    private ProductoData prodata=new ProductoData();
+    private CompraData comdata=new CompraData();
     
     public DetalleCompraData (){
         con=Conexion.getconexion();
@@ -66,5 +69,49 @@ public class DetalleCompraData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle Compra: " + ex.getMessage());
         }
+       
     }
+    public void eliminarDetallecompra(int idDetalle){
+        String sql = "UPDATE detallecompra SET estado = 0 WHERE idDetalle = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDetalle);
+            int fila = ps.executeUpdate();
+            
+            if (fila == 1){
+                JOptionPane.showMessageDialog(null,"Se elimino el Detalle Compra");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Detalle Compra");
+        }
+        
+    }
+    public DetalleCompra buscarDetalleCompra (int id){
+        String sql="SELECT cantidad,precioCosto,idCompra,idProducto,estado FROM detallecompra WHERE idDetalle = ? AND estado = 1";
+        DetalleCompra detalle=null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()){
+                detalle=new DetalleCompra();
+                detalle.setIdDetalle(id);
+                detalle.setCantidad(rs.getInt("cantidad"));
+                detalle.setPrecioCosto(rs.getDouble("precioCosto"));
+                // aqui va id compra
+                Producto pro= prodata.buscarProducto(rs.getInt("idProducto"));
+                detalle.setProducto(pro);
+                detalle.setEstado(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "no existe ese proveedor");
+            }
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedores: " + ex.getMessage());
+        }
+        return detalle;
+    
 }
+}
+
