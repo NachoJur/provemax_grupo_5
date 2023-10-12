@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax_grupo_5.Entidades.Compra;
+import provemax_grupo_5.Entidades.Proveedor;
 
 
 /**
@@ -89,6 +90,9 @@ public class CompraData {
             while(rs.next()){
                 Compra comp = new Compra();
                 comp.setIdCompra(rs.getInt("idCompra"));
+                ProveedorData prov = new ProveedorData();
+                comp.setProveedor(prov.buscarProveedor(rs.getInt("proveedor")));
+                comp.setFecha(rs.getDate("fecha").toLocalDate());
                 realizadas.add(comp);
             }
         }catch(SQLException ex){
