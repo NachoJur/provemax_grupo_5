@@ -33,9 +33,9 @@ public class Compra extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBRegistrar = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 102));
@@ -61,17 +61,19 @@ public class Compra extends javax.swing.JInternalFrame {
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton1.setText("Registrar");
+        jBRegistrar.setBackground(new java.awt.Color(255, 51, 51));
+        jBRegistrar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
+        jBRegistrar.setText("Registrar");
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton2.setText("Modificar");
+        jBModificar.setBackground(new java.awt.Color(255, 51, 51));
+        jBModificar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
+        jBModificar.setText("Modificar");
 
-        jButton3.setBackground(new java.awt.Color(255, 51, 51));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton3.setText("Cancelar");
+        jBCancelar.setBackground(new java.awt.Color(255, 51, 51));
+        jBCancelar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
+        jBCancelar.setText("Cancelar");
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,11 +81,11 @@ public class Compra extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addComponent(jBModificar)
                 .addGap(89, 89, 89)
-                .addComponent(jButton3)
+                .addComponent(jBCancelar)
                 .addGap(61, 61, 61))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +124,9 @@ public class Compra extends javax.swing.JInternalFrame {
                         .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
+                            .addComponent(jBRegistrar)
+                            .addComponent(jBModificar)
+                            .addComponent(jBCancelar))
                         .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -136,9 +138,9 @@ public class Compra extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBRegistrar;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

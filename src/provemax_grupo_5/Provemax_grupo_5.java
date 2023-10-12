@@ -31,9 +31,9 @@ public class Provemax_grupo_5 {
         Conexion.getconexion();
        
        Proveedor juan=new Proveedor(1,"los pollos hermanos","New Mexico","450450",true);
-     ProveedorData pro= new ProveedorData();
-       //pro.guardarProveedor(juan);
-       pro.modificarProveedor(juan);
+       ProveedorData pro= new ProveedorData();
+       pro.guardarProveedor(juan);
+       //pro.modificarProveedor(juan);
        //pro.activarProveedor(2);
 //      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
 //      if(proveedorEncontrado!=null){

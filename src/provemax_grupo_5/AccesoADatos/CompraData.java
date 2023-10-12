@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -75,5 +77,23 @@ public class CompraData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla compra" + ex.getMessage());
         }
+    }
+    
+    public List<Compra> obtenerCompra(int idCompra){
+        String sql = "SELECT * FROM compra WHERE idCompra = ?";
+        ArrayList<Compra> realizadas = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCompra);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Compra comp = new Compra();
+                comp.setIdCompra(rs.getInt("idCompra"));
+                realizadas.add(comp);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla compra" + ex.getMessage());
+        }
+        return realizadas;
     }
 }
