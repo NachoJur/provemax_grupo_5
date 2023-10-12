@@ -11,12 +11,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import provemax_grupo_5.Entidades.Compra;
 import provemax_grupo_5.Entidades.DetalleCompra;
 import provemax_grupo_5.Entidades.Producto;
+import provemax_grupo_5.AccesoADatos.CompraData;
+import provemax_grupo_5.AccesoADatos.ProductoData;
+
 
 /**
  *
@@ -99,19 +104,47 @@ public class DetalleCompraData {
                 detalle.setIdDetalle(id);
                 detalle.setCantidad(rs.getInt("cantidad"));
                 detalle.setPrecioCosto(rs.getDouble("precioCosto"));
-                // aqui va id compra
+                Compra com = comdata.buscarCompra(rs.getInt("idCompra"));
+                detalle.setCompra(com);
                 Producto pro= prodata.buscarProducto(rs.getInt("idProducto"));
                 detalle.setProducto(pro);
                 detalle.setEstado(true);
             }else{
-                JOptionPane.showMessageDialog(null, "no existe ese proveedor");
+                JOptionPane.showMessageDialog(null, "no existe ese detalle");
             }
             ps.close();    
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla proveedores: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla detalle: " + ex.getMessage());
         }
         return detalle;
     
 }
+    public List<DetalleCompra> obtenerDetalles (){
+        
+        String sql = "SELECT idDetalle,cantidad,precioCosto,idCompra,idProducto FROM detallecompra WHERE estado = 1";
+        ArrayList<DetalleCompra> detalles=new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                DetalleCompra det = new DetalleCompra();
+                det.setIdDetalle(rs.getInt("idDetalle"));
+                Compra com = comdata.buscarCompra(rs.getInt("idCompra"));
+                det.setCompra(com);
+                 Producto pro= prodata.buscarProducto(rs.getInt("idProducto"));
+                det.setProducto(pro);
+                det.setCantidad(rs.getInt("cantidad"));
+                det.setPrecioCosto(rs.getDouble("precioCosto"));
+                det.setEstado(true);
+                detalles.add(det);
+            }
+            ps.close();
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Detalle Compra");
+        
+    } return detalles;
+}
+    
+    
 }
 

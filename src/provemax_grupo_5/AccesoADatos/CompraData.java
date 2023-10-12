@@ -50,7 +50,7 @@ public class CompraData {
     }
     
     public void modificarCompra(Compra compra){
-        String sql = "UPDATE compra SET proveedor = ?, fecha = ? WHERE idCompra = ?";
+        String sql = "UPDATE compra SET idProveedor = ?, fecha = ? WHERE idCompra = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,compra.getIdCompra());
@@ -91,7 +91,7 @@ public class CompraData {
                 Compra comp = new Compra();
                 comp.setIdCompra(rs.getInt("idCompra"));
                 ProveedorData prov = new ProveedorData();
-                comp.setProveedor(prov.buscarProveedor(rs.getInt("proveedor")));
+                comp.setProveedor(prov.buscarProveedor(rs.getInt("idProveedor")));
                 comp.setFecha(rs.getDate("fecha").toLocalDate());
                 realizadas.add(comp);
             }
@@ -100,4 +100,29 @@ public class CompraData {
         }
         return realizadas;
     }
+    
+    public Compra buscarCompra (int id){
+       String sql="SELECT idProveedor, fecha FROM compra WHERE idCompra=?";
+       Compra compra=null;
+       try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()){
+                compra=new Compra();
+                compra.setIdCompra(id);
+                ProveedorData prov = new ProveedorData();
+                compra.setProveedor(prov.buscarProveedor(rs.getInt("idProveedor")));
+                compra.setFecha(rs.getDate("fecha").toLocalDate());
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "no existe esa compra");
+            }
+            ps.close();    
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra: " + ex.getMessage());
+       
+    }return compra;
+    }
+    
 }

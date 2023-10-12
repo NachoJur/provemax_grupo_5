@@ -30,9 +30,9 @@ public class Provemax_grupo_5 {
 
         Conexion.getconexion();
        
-       Proveedor juan=new Proveedor(1,"los pollos hermanos","New Mexico","450450",true);
-       ProveedorData pro= new ProveedorData();
-       pro.guardarProveedor(juan);
+       //Proveedor juan=new Proveedor(1,"los pollos hermanos","New Mexico","450450",true);
+       //ProveedorData pro= new ProveedorData();
+       //pro.guardarProveedor(juan);
        //pro.modificarProveedor(juan);
        //pro.activarProveedor(2);
 //      Proveedor proveedorEncontrado=pro.buscarProveedor(1);
@@ -50,14 +50,34 @@ public class Provemax_grupo_5 {
         //Compra com= new Compra(1,juan,LocalDate.of(1999, 5, 27));
 //        CompraData cd= new CompraData();
 //        cd.registrarCompra(com);
-            //Producto pro=new Producto(1,"POLLOFRITO","comida comestible",9.99,5,true);
+           // Producto pro=new Producto(3,"POCHOCLOS DE POLLO","palomitas de pollo esfericas",3.99,20,true);
             //ProductoData pd=new ProductoData();
-           // pd.guardarProducto(pro);
-           //DetalleCompra det= new DetalleCompra(3,2,18.99,com,pro,true);
-           //DetalleCompraData dcd=new DetalleCompraData();
+            //pd.guardarProducto(pro);
+            //pd.modificarUnProducto(pro);
+//            Producto proencontrado=pd.buscarProducto(1);
+//            if(proencontrado!=null){
+//                System.out.println("te encontre!");
+//            }
+           //DetalleCompra det= new DetalleCompra(3,15.99,com,pro,true);
+           DetalleCompraData dcd=new DetalleCompraData();
            //dcd.agregarDetallecompra(det);
            //dcd.modificarDetallecompra(det);
-           
+//           DetalleCompra detalleEncontrado=dcd.buscarDetalleCompra(4);
+//           if(detalleEncontrado!=null){
+//               System.out.println("idDetalle: "+detalleEncontrado.getIdDetalle());
+//               System.out.println("cantidad: "+detalleEncontrado.getCantidad());
+//               System.out.println("cantidad: "+detalleEncontrado.getCantidad());
+//               System.out.println("idcompra: "+detalleEncontrado.getCompra().getIdCompra());
+//              System.out.println("idproducto: "+detalleEncontrado.getProducto().getIdProducto());
+//          }
+//           
+            for (DetalleCompra detalle: (dcd.obtenerDetalles())){
+                System.out.println("idDetalle: "+detalle.getIdDetalle());
+                System.out.println("cantidad: "+detalle.getCantidad());
+                System.out.println("cantidad: "+detalle.getCantidad());
+                System.out.println("idcompra: "+detalle.getCompra().getIdCompra());
+                System.out.println("idproducto: "+detalle.getProducto().getIdProducto());
+            }
 
     }
    // Proveedor juan=new Proveedor(1,"Samsung","Av.Cordoba 1540","450450",true);

@@ -26,15 +26,15 @@ public class ProductoData {
     }
 
     public void guardarProducto(Producto producto) {
-        String sql = "INSERT INTO producto (idProducto, nombreProducto, descripcion, precioActual, stock, estado)" + " VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO producto ( nombreProducto, descripcion, precioActual, stock, estado)" + " VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, producto.getIdProducto());
-            ps.setString(2, producto.getNombreProducto());
-            ps.setString(3, producto.getDescripcion());
-            ps.setDouble(4, producto.getPrecioActual());
-            ps.setInt(5, producto.getStock());
-            ps.setBoolean(6, producto.isEstado());
+            
+            ps.setString(1, producto.getNombreProducto());
+            ps.setString(2, producto.getDescripcion());
+            ps.setDouble(3, producto.getPrecioActual());
+            ps.setInt(4, producto.getStock());
+            ps.setBoolean(5, producto.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
@@ -50,15 +50,16 @@ public class ProductoData {
     }
 
     public void modificarUnProducto(Producto producto) {
-        String sql = "UPDATE producto SET idProducto=?, nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=? WHERE 1";
+        String sql = "UPDATE producto SET  nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=? WHERE idProducto=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, producto.getIdProducto());
-            ps.setString(2, producto.getNombreProducto());
-            ps.setString(3, producto.getDescripcion());
-            ps.setDouble(4, producto.getPrecioActual());
-            ps.setInt(5, producto.getStock());
-            ps.setBoolean(6, producto.isEstado());
+            
+            ps.setString(1, producto.getNombreProducto());
+            ps.setString(2, producto.getDescripcion());
+            ps.setDouble(3, producto.getPrecioActual());
+            ps.setInt(4, producto.getStock());
+            ps.setBoolean(5, producto.isEstado());
+            ps.setInt(6, producto.getIdProducto());
 
             int exito = ps.executeUpdate();
             if (exito == 1) {
@@ -69,18 +70,18 @@ public class ProductoData {
         }
     }
 
-    public Producto buscarProducto(int idProducto) {
+    public Producto buscarProducto(int id) {
 
-        String sql = "SELECT nombreProducto, descripcion, precioActual, stock, FROM producto WHERE idProducto = ? AND estado = 1";
+        String sql = "SELECT nombreProducto, descripcion, precioActual, stock FROM producto WHERE idProducto = ? AND estado = 1";
         Producto producto = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idProducto);
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 producto = new Producto();
-                producto.setIdProducto(idProducto);
+                producto.setIdProducto(id);
                 producto.setNombreProducto(rs.getString("nombreProducto"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
