@@ -33,6 +33,9 @@ public class Provemax extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         ImageIcon icono = new ImageIcon(getClass().getResource("/provemax_grupo_5/Recursos/Foto de Supermercado.jpg"));
         Image miImagen = icono.getImage();
         escritorio = new javax.swing.JDesktopPane(){
@@ -48,6 +51,14 @@ public class Provemax extends javax.swing.JFrame {
         jMIListProductos = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
         jMIRegistroProv = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +86,11 @@ public class Provemax extends javax.swing.JFrame {
         jMProductos.setText("Productos");
 
         jMIListProductos.setText("Lista de Productos");
+        jMIListProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIListProductosActionPerformed(evt);
+            }
+        });
         jMProductos.add(jMIListProductos);
 
         jMenuBar1.add(jMProductos);
@@ -85,6 +101,18 @@ public class Provemax extends javax.swing.JFrame {
         jMProveedores.add(jMIRegistroProv);
 
         jMenuBar1.add(jMProveedores);
+
+        jMenu1.setText("Consultas");
+
+        jMenuItem1.setText("Productos por nombre");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -101,6 +129,26 @@ public class Provemax extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProductosPorNombre ppn = new ProductosPorNombre();
+        ppn.setVisible(true);
+        escritorio.add(ppn);
+        escritorio.moveToFront(ppn);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMIListProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIListProductosActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaDeProductos ldp = new ListaDeProductos();
+
+    }//GEN-LAST:event_jMIListProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +194,11 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIRegistroProv;
     private javax.swing.JMenu jMProductos;
     private javax.swing.JMenu jMProveedores;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
