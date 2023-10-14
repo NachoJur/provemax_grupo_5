@@ -7,6 +7,7 @@ package provemax_grupo_5.Vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.ImageIcon;
  * @author July
  */
 public class Provemax extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form Provemax
@@ -33,7 +35,7 @@ public class Provemax extends javax.swing.JFrame {
 
         ImageIcon icono = new ImageIcon(getClass().getResource("/provemax_grupo_5/Recursos/Foto de Supermercado.jpg"));
         Image miImagen = icono.getImage();
-        jDesktopPane1 = new javax.swing.JDesktopPane(){
+        escritorio = new javax.swing.JDesktopPane(){
             public void paintComponent(Graphics g){
                 g.drawImage(miImagen,0,0,getWidth(),getHeight(),this);
             }
@@ -49,14 +51,14 @@ public class Provemax extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
@@ -90,11 +92,11 @@ public class Provemax extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
@@ -136,7 +138,7 @@ public class Provemax extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMCompra;
     private javax.swing.JMenuItem jMICompraProductos;
     private javax.swing.JMenuItem jMIDetalle;
