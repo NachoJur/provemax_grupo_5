@@ -9,12 +9,12 @@ package provemax_grupo_5.Vistas;
  *
  * @author July
  */
-public class Compra extends javax.swing.JInternalFrame {
+public class Compras extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Compra
      */
-    public Compra() {
+    public Compras() {
         initComponents();
     }
 

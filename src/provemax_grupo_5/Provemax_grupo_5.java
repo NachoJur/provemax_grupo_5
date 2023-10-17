@@ -51,13 +51,14 @@ public class Provemax_grupo_5 {
 //        CompraData cd= new CompraData();
 //        cd.registrarCompra(com);
            // Producto pro=new Producto(3,"POCHOCLOS DE POLLO","palomitas de pollo esfericas",3.99,20,true);
-            //ProductoData pd=new ProductoData();
+           ProductoData pd=new ProductoData();
             //pd.guardarProducto(pro);
             //pd.modificarUnProducto(pro);
 //            Producto proencontrado=pd.buscarProducto(1);
 //            if(proencontrado!=null){
 //                System.out.println("te encontre!");
-//            }
+//                System.out.println("id ");
+//           }
            //DetalleCompra det= new DetalleCompra(3,15.99,com,pro,true);
            DetalleCompraData dcd=new DetalleCompraData();
            //dcd.agregarDetallecompra(det);

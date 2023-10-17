@@ -7,10 +7,11 @@ import provemax_grupo_5.AccesoADatos.ProductoData;
  *
  * @author sergi
  */
-public class Producto extends javax.swing.JInternalFrame {
+public class Productos extends javax.swing.JInternalFrame {
 
     private ProductoData prodD = new ProductoData();
-    private Producto ProductoActual = null;
+    private provemax_grupo_5.Entidades.Producto ProductoActual = null;
+
 
     private void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
@@ -20,7 +21,7 @@ public class Producto extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, mensaje);
     }
 
-    public Producto() {
+    public Productos() {
         initComponents();
 
     }
@@ -222,7 +223,7 @@ public class Producto extends javax.swing.JInternalFrame {
 
         try {
             Integer id = Integer.parseInt(jTIdProducto.getText());
-            //no puedo inisializar la variable productoActual
+             ProductoActual=prodD.buscarProducto(id);
         
         } catch (NumberFormatException ex) {
             mensajes("Debe ingresar un codigo válido");
