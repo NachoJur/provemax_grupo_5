@@ -49,6 +49,7 @@ public class Provemax extends javax.swing.JFrame {
         jMIDetalle = new javax.swing.JMenuItem();
         jMProductos = new javax.swing.JMenu();
         jMIListProductos = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
         jMIRegistroProv = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -92,6 +93,14 @@ public class Provemax extends javax.swing.JFrame {
             }
         });
         jMProductos.add(jMIListProductos);
+
+        jMenuItem2.setText("Productos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMProductos.add(jMenuItem2);
 
         jMenuBar1.add(jMProductos);
 
@@ -150,6 +159,15 @@ public class Provemax extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMIListProductosActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       escritorio.removeAll();
+        escritorio.repaint();
+        Productos pros=new Productos();
+        pros.setVisible(true);
+        escritorio.add(pros);
+        escritorio.moveToFront(pros);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,5 +218,6 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

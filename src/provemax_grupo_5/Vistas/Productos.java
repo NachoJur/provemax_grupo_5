@@ -224,6 +224,16 @@ public class Productos extends javax.swing.JInternalFrame {
         try {
             Integer id = Integer.parseInt(jTIdProducto.getText());
              ProductoActual=prodD.buscarProducto(id);
+             if(ProductoActual!=null){
+              jTNombreProducto.setText(ProductoActual.getNombreProducto());
+              jTDescripcion.setText(ProductoActual.getDescripcion());
+              jRBEstado.setSelected(ProductoActual.isEstado());
+              jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
+              jTStock.setText(String.valueOf(ProductoActual.getStock()));
+
+              
+              
+             }
         
         } catch (NumberFormatException ex) {
             mensajes("Debe ingresar un codigo válido");
