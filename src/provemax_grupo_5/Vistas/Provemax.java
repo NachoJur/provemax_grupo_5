@@ -107,6 +107,11 @@ public class Provemax extends javax.swing.JFrame {
         jMProveedores.setText("Proveedores");
 
         jMIRegistroProv.setText("Registro de Proveedores");
+        jMIRegistroProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIRegistroProvActionPerformed(evt);
+            }
+        });
         jMProveedores.add(jMIRegistroProv);
 
         jMenuBar1.add(jMProveedores);
@@ -167,6 +172,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.add(pros);
         escritorio.moveToFront(pros);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMIRegistroProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIRegistroProvActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        RegistroDeProveedores rdp =new RegistroDeProveedores();
+        rdp.setVisible(true);
+        escritorio.add(rdp);
+        escritorio.moveToFront(rdp);
+    }//GEN-LAST:event_jMIRegistroProvActionPerformed
 
     /**
      * @param args the command line arguments
