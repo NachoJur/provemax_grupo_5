@@ -88,6 +88,11 @@ public class Productos extends javax.swing.JInternalFrame {
 
         jBEliminar.setBackground(new java.awt.Color(255, 51, 51));
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Nombre del Producto");
@@ -114,6 +119,11 @@ public class Productos extends javax.swing.JInternalFrame {
 
         jBSalir.setBackground(new java.awt.Color(255, 255, 255));
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -271,6 +281,7 @@ public class Productos extends javax.swing.JInternalFrame {
                 ProductoActual.setPrecioActual(precioActual);
                 ProductoActual.setStock(stock);
                 ProductoActual.setEstado(estado);
+                prodD.modificarUnProducto(ProductoActual);
             }
         } catch (NumberFormatException nfe) {
             
@@ -279,6 +290,26 @@ public class Productos extends javax.swing.JInternalFrame {
         
 
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        if (ProductoActual!=null) {
+            
+            prodD.eliminarProducto(ProductoActual.getIdProducto());
+            ProductoActual=null;
+            limpiarCampos();
+        }else{
+            
+            mensaje("No hay un producto seleccionado");
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
