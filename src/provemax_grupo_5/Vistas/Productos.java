@@ -2,30 +2,31 @@ package provemax_grupo_5.Vistas;
 
 import javax.swing.JOptionPane;
 import provemax_grupo_5.AccesoADatos.ProductoData;
+import provemax_grupo_5.Entidades.Producto;
 
 /**
  *
  * @author sergi
  */
 public class Productos extends javax.swing.JInternalFrame {
-
+    
     private ProductoData prodD = new ProductoData();
+    
     private provemax_grupo_5.Entidades.Producto ProductoActual = null;
-
-
+    
     private void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
-
+    
     private void mensajes(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
-
+    
     public Productos() {
         initComponents();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,6 +80,11 @@ public class Productos extends javax.swing.JInternalFrame {
 
         jBGuardar.setBackground(new java.awt.Color(255, 255, 0));
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setBackground(new java.awt.Color(255, 51, 51));
         jBEliminar.setText("Eliminar");
@@ -213,33 +219,66 @@ public class Productos extends javax.swing.JInternalFrame {
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         // TODO add your handling code here:
-        
+
         limpiarCampos();
-        ProductoActual=null;
+        ProductoActual = null;
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         // TODO add your handling code here:
 
         try {
+            
             Integer id = Integer.parseInt(jTIdProducto.getText());
-             ProductoActual=prodD.buscarProducto(id);
-             if(ProductoActual!=null){
-              jTNombreProducto.setText(ProductoActual.getNombreProducto());
-              jTDescripcion.setText(ProductoActual.getDescripcion());
-              jRBEstado.setSelected(ProductoActual.isEstado());
-              jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
-              jTStock.setText(String.valueOf(ProductoActual.getStock()));
-
-              
-              
-             }
-        
+            ProductoActual = prodD.buscarProducto(id);
+            if (ProductoActual != null) {
+                jTNombreProducto.setText(ProductoActual.getNombreProducto());
+                jTDescripcion.setText(ProductoActual.getDescripcion());
+                jRBEstado.setSelected(ProductoActual.isEstado());
+                jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
+                jTStock.setText(String.valueOf(ProductoActual.getStock()));
+                
+            }
+            
         } catch (NumberFormatException ex) {
             mensajes("Debe ingresar un codigo válido");
-
+            
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            Integer idProducto = Integer.parseInt(jTIdProducto.getText());
+            String nombreProducto = jTNombreProducto.getText();
+            String descripcion = jTDescripcion.getText();
+            Double precioActual = Double.parseDouble(jTPrecioActual.getText());
+            Integer stock = Integer.parseInt(jTStock.getText());
+            
+            if (nombreProducto.isEmpty() || descripcion.isEmpty()) {
+                mensaje("No puede haber campos vacios");
+                return;
+            }
+            boolean estado = jRBEstado.isSelected();
+            if (ProductoActual == null) {
+                ProductoActual = new Producto(idProducto, nombreProducto, descripcion, precioActual, stock, estado);
+                prodD.guardarProducto(ProductoActual);
+            }else{
+                ProductoActual.setIdProducto(idProducto);
+                ProductoActual.setNombreProducto(nombreProducto);
+                ProductoActual.setDescripcion(descripcion);
+                ProductoActual.setPrecioActual(precioActual);
+                ProductoActual.setStock(stock);
+                ProductoActual.setEstado(estado);
+            }
+        } catch (NumberFormatException nfe) {
+            
+            mensaje("Debe ingresar un codigo valido");
+        }
+        
+
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -263,12 +302,12 @@ public class Productos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTStock;
     // End of variables declaration//GEN-END:variables
 private void limpiarCampos() {
-    
-    jTDescripcion.setText("");
-    jTIdProducto.setText("");
-    jTNombreProducto.setText("");
-    jTPrecioActual.setText("");
-    jTStock.setText("");
-    jRBEstado.setSelected(true);
-}
+        
+        jTDescripcion.setText("");
+        jTIdProducto.setText("");
+        jTNombreProducto.setText("");
+        jTPrecioActual.setText("");
+        jTStock.setText("");
+        jRBEstado.setSelected(true);
+    }
 }
