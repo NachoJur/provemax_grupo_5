@@ -52,7 +52,7 @@ public class Provemax extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
         jMIRegistroProv = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        pXNombre = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
@@ -62,6 +62,7 @@ public class Provemax extends javax.swing.JFrame {
         jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -116,7 +117,7 @@ public class Provemax extends javax.swing.JFrame {
 
         jMenuBar1.add(jMProveedores);
 
-        jMenu1.setText("Consultas");
+        pXNombre.setText("Consultas");
 
         jMenuItem1.setText("Productos por nombre");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,9 +125,9 @@ public class Provemax extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        pXNombre.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(pXNombre);
 
         setJMenuBar(jMenuBar1);
 
@@ -226,12 +227,12 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIRegistroProv;
     private javax.swing.JMenu jMProductos;
     private javax.swing.JMenu jMProveedores;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu pXNombre;
     // End of variables declaration//GEN-END:variables
 }

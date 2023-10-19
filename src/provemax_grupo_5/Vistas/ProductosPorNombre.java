@@ -1,8 +1,11 @@
 
 package provemax_grupo_5.Vistas;
 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.bind.annotation.XmlElement;
+import provemax_grupo_5.AccesoADatos.ProductoData;
+import provemax_grupo_5.Entidades.Producto;
 
 /**
  *
@@ -16,9 +19,14 @@ public class ProductosPorNombre extends javax.swing.JInternalFrame {
             return false;
         }
     };
+private ProductoData pData = new ProductoData();
+private Producto productoActual=null;
+private List<Producto>listP;
 
     
     public ProductosPorNombre() {
+       pData = new ProductoData();
+       listP = pData.listarProductos();
         initComponents();
         armarCabecera();
     }
@@ -94,7 +102,7 @@ public class ProductosPorNombre extends javax.swing.JInternalFrame {
     private void jTFNombreElectroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreElectroKeyReleased
         // TODO add your handling code here:
         
-        
+       
     }//GEN-LAST:event_jTFNombreElectroKeyReleased
 
 
@@ -116,4 +124,9 @@ public class ProductosPorNombre extends javax.swing.JInternalFrame {
         jTProductos.setModel(modelo);
     }
 
+    public void cargarProducto(){
+        for (Producto item:listP){
+            
+        }
+    }
 }
