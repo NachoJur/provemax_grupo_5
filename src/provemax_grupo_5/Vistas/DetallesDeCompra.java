@@ -198,7 +198,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLESTADO))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jBsalir)
                                     .addComponent(jBlistar)
@@ -229,39 +229,51 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
     
     try {
-    int id = Integer.parseInt(jTidde.getText());
+    String iddeText = jTidde.getText();
     int cantidad = Integer.parseInt(jTcantidad.getText());
     double precio = Double.parseDouble(jTprecio.getText());
-    
+
     String idproText = jTidpro.getText();
     String idcomText = jTidcom.getText();
-    
+
     if (idproText.isEmpty() || idcomText.isEmpty()) {
         JOptionPane.showMessageDialog(this, "Los campos idProducto e idCompra no deben estar vacíos.");
         return;
     }
-    
-    int idpro = Integer.parseInt(idproText); 
-    int idcom = Integer.parseInt(idcomText); 
-    
-    Producto proA = prod.buscarProducto(idpro); 
-    Compra comA = comd.buscarCompra(idcom); 
-    
+
+    int idpro = Integer.parseInt(idproText);
+    int idcom = Integer.parseInt(idcomText);
+
+    Producto proA = prod.buscarProducto(idpro);
+    Compra comA = comd.buscarCompra(idcom);
+
     boolean estado = jRestado.isSelected();
-    
-    if (deActual == null) {
+
+    if (iddeText.isEmpty()) {
+        // Si jTidde está vacío, agrega un nuevo detalle de compra
         deActual = new DetalleCompra(cantidad, precio, comA, proA, estado);
         deData.agregarDetallecompra(deActual);
+        JOptionPane.showMessageDialog(this, "Detalle de compra agregado");
     } else {
-        deActual.setCompra(comA);
-        deActual.setProducto(proA);
-        deActual.setCantidad(cantidad);
-        deActual.setPrecioCosto(precio);
-        deData.modificarDetallecompra(deActual);
+        // Si jTidde no está vacío, modifica el detalle de compra existente
+        int idde = Integer.parseInt(iddeText);
+        DetalleCompra detalleExistente = deData.buscarDetalleCompra(idde);
+
+        if (detalleExistente != null) {
+            detalleExistente.setCompra(comA);
+            detalleExistente.setProducto(proA);
+            detalleExistente.setCantidad(cantidad);
+            detalleExistente.setPrecioCosto(precio);
+            deData.modificarDetallecompra(detalleExistente);
+            JOptionPane.showMessageDialog(this, "Detalle de compra modificado");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró un detalle de compra con el ID especificado.");
+        }
     }
 } catch (NumberFormatException nfe) {
     JOptionPane.showMessageDialog(this, "Debe ingresar un número válido en el campo Cantidad o Precio");
 }
+
 
 
 
