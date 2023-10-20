@@ -46,7 +46,7 @@ public class Provemax extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCompra = new javax.swing.JMenu();
         jMICompraProductos = new javax.swing.JMenuItem();
-        jMIDetalle = new javax.swing.JMenuItem();
+        jMIDetalles = new javax.swing.JMenuItem();
         jMProductos = new javax.swing.JMenu();
         jMIListProductos = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -80,8 +80,13 @@ public class Provemax extends javax.swing.JFrame {
         jMICompraProductos.setText("Compra de Productos");
         jMCompra.add(jMICompraProductos);
 
-        jMIDetalle.setText("Detalle de Compra");
-        jMCompra.add(jMIDetalle);
+        jMIDetalles.setText("Detalles de Compra");
+        jMIDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDetallesActionPerformed(evt);
+            }
+        });
+        jMCompra.add(jMIDetalles);
 
         jMenuBar1.add(jMCompra);
 
@@ -183,6 +188,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(rdp);
     }//GEN-LAST:event_jMIRegistroProvActionPerformed
 
+    private void jMIDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDetallesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        DetallesDeCompra ddc =new DetallesDeCompra();
+        ddc.setVisible(true);
+        escritorio.add(ddc);
+        escritorio.moveToFront(ddc);
+    }//GEN-LAST:event_jMIDetallesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -222,7 +236,7 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMCompra;
     private javax.swing.JMenuItem jMICompraProductos;
-    private javax.swing.JMenuItem jMIDetalle;
+    private javax.swing.JMenuItem jMIDetalles;
     private javax.swing.JMenuItem jMIListProductos;
     private javax.swing.JMenuItem jMIRegistroProv;
     private javax.swing.JMenu jMProductos;
