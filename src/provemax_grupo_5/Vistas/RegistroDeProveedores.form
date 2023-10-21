@@ -73,14 +73,17 @@
               <Component id="jBeliminar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jBactivar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBlimpiar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBbuscar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jBuscar2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBbuscar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jBlistar" min="-2" max="-2" attributes="0"/>
@@ -165,7 +168,9 @@
                   </Group>
               </Group>
               <Component id="jScrollPane1" min="-2" pref="90" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="jBuscar2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBsalir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBlistar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -201,6 +206,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="LISTAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBlistarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBbuscar">
       <Properties>
@@ -335,6 +343,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ACTIVO"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBuscar2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="BUSCAR-"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBuscar2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
