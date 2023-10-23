@@ -332,6 +332,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
             return;
         }
         
+        
         Boolean estado=jRestado.isSelected();
         if (proActual==null){
          proActual=new Proveedor(razonsocial,domicilio,telefono,estado);
