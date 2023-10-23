@@ -346,7 +346,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         
          }catch(NumberFormatException nfe){
              
-           JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
+           JOptionPane.showMessageDialog(this, "debe ingresar caracteres valido");
        }
     }//GEN-LAST:event_jBguardarActionPerformed
 
