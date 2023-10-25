@@ -13,12 +13,7 @@ import provemax_grupo_5.Entidades.Producto;
  */
 public class ProductosPorNombre extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel() {
-
-        public boolean isCellEditable(int f, int c) {
-            return false;
-        }
-    };
+   
 private ProductoData pData = new ProductoData();
 private Producto productoActual=null;
 private List<Producto>listP;
@@ -28,7 +23,7 @@ private List<Producto>listP;
        pData = new ProductoData();
        listP = pData.listarProductos();
         initComponents();
-        armarCabecera();
+       
     }
 
     
@@ -114,15 +109,7 @@ private List<Producto>listP;
     private javax.swing.JTable jTProductos;
     // End of variables declaration//GEN-END:variables
 
-    private void armarCabecera() {
-
-        modelo.addColumn("idProducto");
-        modelo.addColumn("descripción");
-        modelo.addColumn("precioActual");
-        modelo.addColumn("stock");
-        modelo.addColumn("estado");
-        jTProductos.setModel(modelo);
-    }
+   
 
     public void cargarProducto(){
         for (Producto item:listP){
