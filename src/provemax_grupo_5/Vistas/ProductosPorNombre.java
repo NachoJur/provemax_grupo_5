@@ -191,6 +191,5 @@ public class ProductosPorNombre extends javax.swing.JInternalFrame {
       for (Producto aux:listP){
           jCBProducto.addItem(aux);
       }
-  }
-   
+  } 
 }
