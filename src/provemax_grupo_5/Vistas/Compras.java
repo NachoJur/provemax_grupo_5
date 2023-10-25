@@ -5,17 +5,34 @@
  */
 package provemax_grupo_5.Vistas;
 
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import provemax_grupo_5.AccesoADatos.CompraData;
+import provemax_grupo_5.AccesoADatos.ProveedorData;
+import provemax_grupo_5.Entidades.Compra;
+import provemax_grupo_5.Entidades.Proveedor;
+
 /**
  *
  * @author July
  */
 public class Compras extends javax.swing.JInternalFrame {
-
+    public CompraData compData = new CompraData();
+    public Compra compNueva = null;
+    private List<Proveedor>listProv;
+    private ProveedorData provDta;
     /**
      * Creates new form Compra
      */
     public Compras() {
         initComponents();
+        listProv = provDta.listarProveedores();
+        cargarProveedor();
     }
 
     /**
@@ -31,12 +48,12 @@ public class Compras extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jtfProducto = new javax.swing.JTextField();
         jBRegistrar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbProveedor = new javax.swing.JComboBox<>();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(0, 102, 102));
         setClosable(true);
@@ -59,34 +76,49 @@ public class Compras extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("* Ingrese la fecha: ");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jtfProducto.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         jBRegistrar.setBackground(new java.awt.Color(255, 51, 51));
         jBRegistrar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         jBRegistrar.setText("Registrar");
+        jBRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegistrarActionPerformed(evt);
+            }
+        });
 
         jBModificar.setBackground(new java.awt.Color(255, 51, 51));
         jBModificar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         jBCancelar.setBackground(new java.awt.Color(255, 51, 51));
         jBCancelar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jcbProveedor.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(36, 36, 36)
                 .addComponent(jBRegistrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jBModificar)
-                .addGap(89, 89, 89)
+                .addGap(91, 91, 91)
                 .addComponent(jBCancelar)
-                .addGap(61, 61, 61))
+                .addGap(56, 56, 56))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -97,13 +129,13 @@ public class Compras extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtfProducto)
+                            .addComponent(jcbProveedor, 0, 190, Short.MAX_VALUE)
+                            .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,41 +144,95 @@ public class Compras extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 138, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBRegistrar)
                             .addComponent(jBModificar)
                             .addComponent(jBCancelar))
-                        .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(51, 51, 51))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarActionPerformed
+        String producto = jtfProducto.getText();
+        Proveedor prov = (Proveedor)jcbProveedor.getSelectedItem();
+        java.util.Date fecha = jdcFecha.getDate();
+        LocalDate fech = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if(producto.isEmpty()){
+            JOptionPane.showMessageDialog(this, "");
+            return;
+        }
+        if(compNueva == null){
+            compNueva = new Compra(prov,fech);
+            compData.registrarCompra(compNueva);
+        }else{
+            compNueva.setProveedor(prov);
+            compNueva.setFecha(fech);
+            compData.modificarCompra(compNueva);
+        }
+        limpiarCampos();
+    }//GEN-LAST:event_jBRegistrarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+        String producto = jtfProducto.getText();
+        Proveedor prov = (Proveedor)jcbProveedor.getSelectedItem();
+        java.util.Date fecha = jdcFecha.getDate();
+        LocalDate fech = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if(producto.isEmpty()){
+            JOptionPane.showMessageDialog(this, "");
+            return;
+        }
+        if(compNueva == null){
+            compNueva = new Compra(prov,fech);
+            compNueva.setProveedor(prov);
+            compNueva.setFecha(fech);
+            compData.modificarCompra(compNueva);
+        }
+        limpiarCampos();
+    }//GEN-LAST:event_jBModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBRegistrar;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<Proveedor> jcbProveedor;
+    private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JTextField jtfProducto;
     // End of variables declaration//GEN-END:variables
+    
+    public void limpiarCampos(){
+        jtfProducto.setText("");
+        jdcFecha.setDate(new Date());
+    }
+    
+    public void cargarProveedor(){
+        for (Proveedor item:listProv){
+            jcbProveedor.addItem(item);
+        }
+    }
 }

@@ -78,6 +78,11 @@ public class Provemax extends javax.swing.JFrame {
         jMCompra.setText("Compra");
 
         jMICompraProductos.setText("Compra de Productos");
+        jMICompraProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICompraProductosActionPerformed(evt);
+            }
+        });
         jMCompra.add(jMICompraProductos);
 
         jMIDetalle.setText("Detalle de Compra");
@@ -182,6 +187,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.add(rdp);
         escritorio.moveToFront(rdp);
     }//GEN-LAST:event_jMIRegistroProvActionPerformed
+
+    private void jMICompraProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompraProductosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Compras comp = new Compras();
+        comp.setVisible(true);
+        escritorio.add(comp);
+        escritorio.moveToFront(comp);
+    }//GEN-LAST:event_jMICompraProductosActionPerformed
 
     /**
      * @param args the command line arguments
