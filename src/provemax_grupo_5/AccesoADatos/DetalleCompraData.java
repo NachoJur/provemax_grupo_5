@@ -119,37 +119,6 @@ public class DetalleCompraData {
         return detalle;
     
 }
-//    public DetalleCompra buscarDetalleCompraPorIdProducto(int idProducto) {
-//    String sql = "SELECT idDetalle, cantidad, precioCosto, idCompra, estado FROM detallecompra WHERE idProducto = ? AND estado = 1";
-//    DetalleCompra detalle = null;
-//    
-//    try {
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setInt(1, idProducto);
-//        ResultSet rs = ps.executeQuery();
-//        
-//        if (rs.next()) {
-//            detalle = new DetalleCompra();
-//            detalle.setIdDetalle(rs.getInt("idDetalle"));
-//            detalle.setCantidad(rs.getInt("cantidad"));
-//            detalle.setPrecioCosto(rs.getDouble("precioCosto"));
-//            Compra com = comdata.buscarCompra(rs.getInt("idCompra"));
-//            detalle.setCompra(com);
-//            Producto pro = prodata.buscarProducto(idProducto);
-//            detalle.setProducto(pro);
-//            detalle.setEstado(true);
-//        } else {
-//            JOptionPane.showMessageDialog(null, "No existe ese detalle para el producto con ID: " + idProducto);
-//        }
-//        
-//        ps.close();
-//    } catch (SQLException ex) {
-//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla detalle: " + ex.getMessage());
-//    }
-//    
-//    return detalle;
-//}
-
     public List<DetalleCompra> obtenerDetalles (){
         
         String sql = "SELECT idDetalle,cantidad,precioCosto,idCompra,idProducto FROM detallecompra WHERE estado = 1";

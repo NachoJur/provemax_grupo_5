@@ -5,9 +5,7 @@
  */
 package provemax_grupo_5.Vistas;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import provemax_grupo_5.AccesoADatos.ProveedorData;
 import provemax_grupo_5.Entidades.Proveedor;
 
@@ -21,8 +19,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
 
    private ProveedorData proData= new ProveedorData();
    private Proveedor proActual= null;
-   private ArrayList <Proveedor> listaP;
-    private DefaultTableModel modelo;
     public RegistroDeProveedores() {
         initComponents();
     }
@@ -60,7 +56,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         jTtelefono = new javax.swing.JTextField();
         jRestado = new javax.swing.JRadioButton();
         jLESTADO = new javax.swing.JLabel();
-        jBuscar2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -106,11 +101,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         });
 
         jBlistar.setText("LISTAR");
-        jBlistar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBlistarActionPerformed(evt);
-            }
-        });
 
         jBbuscar.setText("BUSCAR");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -172,33 +162,24 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
 
         jLESTADO.setText("ACTIVO");
 
-        jBuscar2.setText("BUSCAR-");
-        jBuscar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBuscar2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jBguardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBeliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jBactivar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBlimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBuscar2)
-                            .addComponent(jBbuscar))))
+                        .addComponent(jBbuscar))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBlistar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,15 +239,13 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRestado)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLESTADO)
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addComponent(jBuscar2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
                     .addComponent(jBlistar)
@@ -332,7 +311,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
             return;
         }
         
-        
         Boolean estado=jRestado.isSelected();
         if (proActual==null){
          proActual=new Proveedor(razonsocial,domicilio,telefono,estado);
@@ -347,7 +325,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         
          }catch(NumberFormatException nfe){
              
-           JOptionPane.showMessageDialog(this, "debe ingresar caracteres valido");
+           JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
        }
     }//GEN-LAST:event_jBguardarActionPerformed
 
@@ -355,39 +333,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         limpiarCampos();
         proActual=null;  
     }//GEN-LAST:event_jBlimpiarActionPerformed
-
-    private void jBlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlistarActionPerformed
-        listaP= (ArrayList<Proveedor>) proData.listarProveedores();
-        modelo = (DefaultTableModel) jTable1.getModel();
-
-    
-    modelo.setRowCount(0);
-
-    for (Proveedor p : listaP) {
-        modelo.addRow(new Object[]{p.getIdProveedor(), p.getRazonSocial(), p.getDomicilio(),p.getTelefono(),p.isEstado()});
-    }
-
-    jTable1.setModel(modelo);
-        
-        
-        
-    }//GEN-LAST:event_jBlistarActionPerformed
-
-    private void jBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscar2ActionPerformed
-        try{ 
-            Integer id=Integer.parseInt(jTidpro.getText());
-            proActual=proData.buscarProveedorne(id);
-            if(proActual!=null){
-                jTrazonssocial.setText(proActual.getRazonSocial());
-                jTdomicilio.setText(proActual.getDomicilio());
-                jTtelefono.setText(proActual.getTelefono());
-                jRestado.setSelected(proActual.isEstado());
-                
-            }
-        }catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
-        } 
-    }//GEN-LAST:event_jBuscar2ActionPerformed
     private void limpiarCampos(){
         jTidpro.setText("");
         jTrazonssocial.setText("");
@@ -406,7 +351,6 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jBlistar;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JButton jBuscar2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;

@@ -46,8 +46,9 @@ public class Provemax extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCompra = new javax.swing.JMenu();
         jMICompraProductos = new javax.swing.JMenuItem();
-        jMIDetalles = new javax.swing.JMenuItem();
+        jMIDetalle = new javax.swing.JMenuItem();
         jMProductos = new javax.swing.JMenu();
+        jMIListProductos = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
         jMIRegistroProv = new javax.swing.JMenuItem();
@@ -77,19 +78,32 @@ public class Provemax extends javax.swing.JFrame {
         jMCompra.setText("Compra");
 
         jMICompraProductos.setText("Compra de Productos");
-        jMCompra.add(jMICompraProductos);
-
-        jMIDetalles.setText("Detalles de Compra");
-        jMIDetalles.addActionListener(new java.awt.event.ActionListener() {
+        jMICompraProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIDetallesActionPerformed(evt);
+                jMICompraProductosActionPerformed(evt);
             }
         });
-        jMCompra.add(jMIDetalles);
+        jMCompra.add(jMICompraProductos);
+
+        jMIDetalle.setText("Detalle de Compra");
+        jMIDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIDetalleActionPerformed(evt);
+            }
+        });
+        jMCompra.add(jMIDetalle);
 
         jMenuBar1.add(jMCompra);
 
         jMProductos.setText("Productos");
+
+        jMIListProductos.setText("Lista de Productos");
+        jMIListProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIListProductosActionPerformed(evt);
+            }
+        });
+        jMProductos.add(jMIListProductos);
 
         jMenuItem2.setText("Productos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +166,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(ppn);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMIListProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIListProductosActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListaDeProductos ldp = new ListaDeProductos();
+
+    }//GEN-LAST:event_jMIListProductosActionPerformed
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        escritorio.removeAll();
         escritorio.repaint();
@@ -170,14 +193,23 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(rdp);
     }//GEN-LAST:event_jMIRegistroProvActionPerformed
 
-    private void jMIDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDetallesActionPerformed
+    private void jMICompraProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompraProductosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Compras comp = new Compras();
+        comp.setVisible(true);
+        escritorio.add(comp);
+        escritorio.moveToFront(comp);
+    }//GEN-LAST:event_jMICompraProductosActionPerformed
+
+    private void jMIDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDetalleActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         DetallesDeCompra ddc =new DetallesDeCompra();
         ddc.setVisible(true);
         escritorio.add(ddc);
         escritorio.moveToFront(ddc);
-    }//GEN-LAST:event_jMIDetallesActionPerformed
+    }//GEN-LAST:event_jMIDetalleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,7 +250,8 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMCompra;
     private javax.swing.JMenuItem jMICompraProductos;
-    private javax.swing.JMenuItem jMIDetalles;
+    private javax.swing.JMenuItem jMIDetalle;
+    private javax.swing.JMenuItem jMIListProductos;
     private javax.swing.JMenuItem jMIRegistroProv;
     private javax.swing.JMenu jMProductos;
     private javax.swing.JMenu jMProveedores;

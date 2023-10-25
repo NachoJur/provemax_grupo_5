@@ -31,13 +31,16 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Compra de Productos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMICompraProductosActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMIDetalles">
+            <MenuItem class="javax.swing.JMenuItem" name="jMIDetalle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Detalles de Compra"/>
+                <Property name="text" type="java.lang.String" value="Detalle de Compra"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIDetallesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMIDetalleActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
