@@ -25,7 +25,8 @@ public class Compras extends javax.swing.JInternalFrame {
     public CompraData compData = new CompraData();
     public Compra compNueva = null;
     private List<Proveedor>listProv;
-    private ProveedorData provDta;
+     ProveedorData provDta = new ProveedorData();
+    
     /**
      * Creates new form Compra
      */
@@ -131,7 +132,7 @@ public class Compras extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtfProducto)
                             .addComponent(jcbProveedor, 0, 190, Short.MAX_VALUE)
-                            .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(192, 192, 192)
                         .addComponent(jLabel1)))
@@ -152,17 +153,14 @@ public class Compras extends javax.swing.JInternalFrame {
                     .addComponent(jcbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 138, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBRegistrar)
-                            .addComponent(jBModificar)
-                            .addComponent(jBCancelar))
-                        .addGap(51, 51, 51))))
+                    .addComponent(jLabel4)
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBRegistrar)
+                    .addComponent(jBModificar)
+                    .addComponent(jBCancelar))
+                .addGap(51, 51, 51))
         );
 
         pack();
