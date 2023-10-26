@@ -5,7 +5,9 @@
  */
 package provemax_grupo_5.Vistas;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import provemax_grupo_5.AccesoADatos.ProveedorData;
 import provemax_grupo_5.Entidades.Proveedor;
 
@@ -19,6 +21,8 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
 
    private ProveedorData proData= new ProveedorData();
    private Proveedor proActual= null;
+   private ArrayList <Proveedor> listaP;
+    private DefaultTableModel modelo;
     public RegistroDeProveedores() {
         initComponents();
     }
@@ -56,6 +60,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         jTtelefono = new javax.swing.JTextField();
         jRestado = new javax.swing.JRadioButton();
         jLESTADO = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -90,7 +95,10 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        setBackground(new java.awt.Color(1, 102, 102));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("REGISTRO DE PROVEEDORES");
 
         jBsalir.setText("SALIR");
@@ -101,6 +109,11 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         });
 
         jBlistar.setText("LISTAR");
+        jBlistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBlistarActionPerformed(evt);
+            }
+        });
 
         jBbuscar.setText("BUSCAR");
         jBbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,17 +163,36 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("ID PROVEEDORES");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("RAZON SOCIAL");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("DOMICILIO");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("TELEFONO");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setText("ESTADO");
 
+        jRestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRestadoActionPerformed(evt);
+            }
+        });
+
+        jLESTADO.setForeground(new java.awt.Color(255, 255, 0));
         jLESTADO.setText("ACTIVO");
+
+        jButton1.setText("BUSCAR-");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,13 +205,15 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                 .addComponent(jBeliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBactivar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBlimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBbuscar))
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jBactivar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBlimpiar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jBbuscar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBlistar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,7 +279,9 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                         .addComponent(jLESTADO)
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
                     .addComponent(jBlistar)
@@ -333,6 +369,45 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         limpiarCampos();
         proActual=null;  
     }//GEN-LAST:event_jBlimpiarActionPerformed
+
+    private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
+ jRestado.setSelected(true);
+        jLESTADO.setText("ACTIVO");
+         jRestado.setSelected(false);
+         jLESTADO.setText("INACTIVO");        // TODO add your handling code here:
+    }//GEN-LAST:event_jRestadoActionPerformed
+
+    private void jBlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlistarActionPerformed
+        listaP = (ArrayList<Proveedor>) proData.listarProveedores();
+
+    
+    modelo = (DefaultTableModel) jTable1.getModel();
+
+    
+    modelo.setRowCount(0);
+
+    for (Proveedor p : listaP) {
+        modelo.addRow(new Object[]{p.getIdProveedor(), p.getRazonSocial(), p.getDomicilio(),p.getTelefono(),p.isEstado()});
+    }
+
+    jTable1.setModel(modelo);
+    }//GEN-LAST:event_jBlistarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{ 
+            Integer id=Integer.parseInt(jTidpro.getText());
+            proActual=proData.buscarProveedorNE(id);
+            if(proActual!=null){
+                jTrazonssocial.setText(proActual.getRazonSocial());
+                jTdomicilio.setText(proActual.getDomicilio());
+                jTtelefono.setText(proActual.getTelefono());
+                jRestado.setSelected(proActual.isEstado());
+                
+            }
+        }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
+        } 
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void limpiarCampos(){
         jTidpro.setText("");
         jTrazonssocial.setText("");
@@ -351,6 +426,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBlimpiar;
     private javax.swing.JButton jBlistar;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;

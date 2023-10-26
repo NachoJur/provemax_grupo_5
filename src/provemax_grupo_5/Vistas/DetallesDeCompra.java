@@ -70,6 +70,8 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         jTdetalles = new javax.swing.JTable();
         jBpopular = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(1, 102, 102));
+
         jBsalir.setText("SALIR");
         jBsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,21 +115,35 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DETALLES DE COMPRA");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("ID DETALLE");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("CANTIDAD");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("PRECIO/COSTO");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("ID COMPRA");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
         jLabel6.setText("ID PRODUCTO");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 0));
         jLabel7.setText("ESTADO");
 
+        jRestado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRestadoActionPerformed(evt);
+            }
+        });
+
+        jLESTADO.setForeground(new java.awt.Color(255, 255, 0));
         jLESTADO.setText("ACTIVO");
 
         jTdetalles.setModel(new javax.swing.table.DefaultTableModel(
@@ -398,6 +414,13 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
 
     jTdetalles.setModel(modelo);
     }//GEN-LAST:event_jBpopularActionPerformed
+
+    private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
+        jRestado.setSelected(true);
+        jLESTADO.setText("ACTIVO");
+         jRestado.setSelected(false);
+         jLESTADO.setText("INACTIVO");  
+    }//GEN-LAST:event_jRestadoActionPerformed
 
  private void limpiarCampos(){
         jTidpro.setText("");

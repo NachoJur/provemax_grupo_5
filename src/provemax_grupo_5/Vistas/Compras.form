@@ -49,7 +49,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jtfProducto" max="32767" attributes="0"/>
                           <Component id="jcbProveedor" pref="190" max="32767" attributes="0"/>
-                          <Component id="jdcFecha" min="-2" max="-2" attributes="0"/>
+                          <Component id="jdcFecha" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -81,7 +81,7 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <Component id="jdcFecha" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="64" max="32767" attributes="0"/>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBRegistrar" alignment="3" max="-2" attributes="0"/>
                   <Component id="jBModificar" alignment="3" min="-2" max="-2" attributes="0"/>
