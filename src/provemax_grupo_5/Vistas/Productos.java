@@ -171,28 +171,33 @@ public class Productos extends javax.swing.JInternalFrame {
                                         .addGap(47, 47, 47)
                                         .addComponent(jBNuevo)))
                                 .addGap(49, 49, 49)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jBGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBEliminar)
-                                .addGap(57, 57, 57))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(71, 71, 71))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBGuardar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBEliminar)
+                                        .addGap(102, 102, 102))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(71, 71, 71))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jBCambiarEstado)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE))
+                                            .addComponent(jTDescripcion)
                                             .addComponent(jTPrecioActual)
-                                            .addComponent(jTStock)
-                                            .addComponent(jTNombreProducto, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addComponent(jTIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jBCambiarEstado, javax.swing.GroupLayout.Alignment.LEADING)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                            .addComponent(jTStock))))
+                                .addGap(20, 20, 20))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,7 +278,9 @@ public class Productos extends javax.swing.JInternalFrame {
                 jRBEstado.setSelected(ProductoActual.isEstado());
                 jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
                 jTStock.setText(String.valueOf(ProductoActual.getStock()));
-
+            if (ProductoActual.getStock() <= 3) {
+                mensajes("¡ATENCIÓN! El Stock se encuentra por debajo del limite establecido");
+            }
             }
 
         } catch (NumberFormatException ex) {
@@ -309,6 +316,7 @@ public class Productos extends javax.swing.JInternalFrame {
                 ProductoActual.setEstado(estado);
                 prodD.modificarUnProducto(ProductoActual);
             }
+           
         } catch (NumberFormatException nfe) {
 
             if (jTIdProducto.getText().matches("[^0-9]")) {
@@ -343,12 +351,12 @@ public class Productos extends javax.swing.JInternalFrame {
 
     private void jBCambiarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCambiarEstadoActionPerformed
         // TODO add your handling code here:
-        
-         if (ProductoActual != null) {
-             
-             prodD.cambiarEstadoProducto(ProductoActual.getIdProducto());
-             
-         }
+
+        if (ProductoActual != null) {
+
+            prodD.cambiarEstadoProducto(ProductoActual.getIdProducto());
+
+        }
     }//GEN-LAST:event_jBCambiarEstadoActionPerformed
 
 
