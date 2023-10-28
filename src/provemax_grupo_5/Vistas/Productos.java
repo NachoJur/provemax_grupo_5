@@ -9,24 +9,24 @@ import provemax_grupo_5.Entidades.Producto;
  * @author sergi
  */
 public class Productos extends javax.swing.JInternalFrame {
-    
+
     private ProductoData prodD = new ProductoData();
-    
+
     private provemax_grupo_5.Entidades.Producto ProductoActual = null;
-    
+
     private void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
-    
+
     private void mensajes(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
-    
+
     public Productos() {
         initComponents();
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,14 +49,17 @@ public class Productos extends javax.swing.JInternalFrame {
         jTStock = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
+        jBCambiarEstado = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel1.setBackground(new java.awt.Color(255, 153, 153));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 102, 0));
         jLabel1.setText("Registro de Productos");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 51));
         jLabel2.setText("Id Producto");
 
         jTIdProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +98,25 @@ public class Productos extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 51));
         jLabel3.setText("Nombre del Producto");
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 51));
         jLabel4.setText("Descripcion");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 0));
         jLabel5.setText("Precio Actual");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 51));
         jLabel6.setText("Stock");
 
+        jRBEstado.setBackground(new java.awt.Color(51, 153, 255));
+
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 51));
         jLabel7.setText("Estado");
 
         jBBuscar.setBackground(new java.awt.Color(204, 255, 204));
@@ -122,6 +132,15 @@ public class Productos extends javax.swing.JInternalFrame {
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);
+            }
+        });
+
+        jBCambiarEstado.setBackground(new java.awt.Color(51, 153, 255));
+        jBCambiarEstado.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jBCambiarEstado.setText("Cambiar Estado");
+        jBCambiarEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCambiarEstadoActionPerformed(evt);
             }
         });
 
@@ -152,22 +171,33 @@ public class Productos extends javax.swing.JInternalFrame {
                                         .addGap(47, 47, 47)
                                         .addComponent(jBNuevo)))
                                 .addGap(49, 49, 49)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                                    .addComponent(jTPrecioActual)
-                                    .addComponent(jTStock)
-                                    .addComponent(jTNombreProducto, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jBGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jBEliminar)
-                                .addGap(57, 57, 57))
-                            .addComponent(jTIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jBGuardar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBEliminar)
+                                        .addGap(102, 102, 102))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(71, 71, 71))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jBCambiarEstado)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE))
+                                            .addComponent(jTDescripcion)
+                                            .addComponent(jTPrecioActual)
+                                            .addComponent(jTStock))))
+                                .addGap(20, 20, 20))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,8 +234,9 @@ public class Productos extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jRBEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                    .addComponent(jRBEstado)
+                    .addComponent(jBCambiarEstado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
                     .addComponent(jBGuardar)
@@ -238,7 +269,7 @@ public class Productos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            
+
             Integer id = Integer.parseInt(jTIdProducto.getText());
             ProductoActual = prodD.buscarProducto(id);
             if (ProductoActual != null) {
@@ -247,12 +278,14 @@ public class Productos extends javax.swing.JInternalFrame {
                 jRBEstado.setSelected(ProductoActual.isEstado());
                 jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
                 jTStock.setText(String.valueOf(ProductoActual.getStock()));
-                
+            if (ProductoActual.getStock() <= 3) {
+                mensajes("¡ATENCIÓN! El Stock se encuentra por debajo del limite establecido");
             }
-            
+            }
+
         } catch (NumberFormatException ex) {
             mensajes("Debe ingresar un codigo válido");
-            
+
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -265,7 +298,7 @@ public class Productos extends javax.swing.JInternalFrame {
             String descripcion = jTDescripcion.getText();
             Double precioActual = Double.parseDouble(jTPrecioActual.getText());
             Integer stock = Integer.parseInt(jTStock.getText());
-            
+
             if (nombreProducto.isEmpty() || descripcion.isEmpty()) {
                 mensaje("No puede haber campos vacios");
                 return;
@@ -274,7 +307,7 @@ public class Productos extends javax.swing.JInternalFrame {
             if (ProductoActual == null) {
                 ProductoActual = new Producto(idProducto, nombreProducto, descripcion, precioActual, stock, estado);
                 prodD.guardarProducto(ProductoActual);
-            }else{
+            } else {
                 ProductoActual.setIdProducto(idProducto);
                 ProductoActual.setNombreProducto(nombreProducto);
                 ProductoActual.setDescripcion(descripcion);
@@ -283,37 +316,53 @@ public class Productos extends javax.swing.JInternalFrame {
                 ProductoActual.setEstado(estado);
                 prodD.modificarUnProducto(ProductoActual);
             }
+           
         } catch (NumberFormatException nfe) {
-            
-            mensaje("Debe ingresar un codigo valido");
+
+            if (jTIdProducto.getText().matches("[^0-9]")) {
+                mensaje("Debe ingresar un ID de producto válido");
+            } else if (jTPrecioActual.getText().matches("[^0-9.]")) {
+                mensaje("Debe ingresar un precio válido y separando la parte entera de la decimal con un punto");
+            } else if (jTStock.getText().matches("[^0-9]")) {
+                mensaje("Debe ingresar un numero entero");
+            }
         }
-        
 
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
-        
-        if (ProductoActual!=null) {
-            
+
+        if (ProductoActual != null) {
+
             prodD.eliminarProducto(ProductoActual.getIdProducto());
-            ProductoActual=null;
-            limpiarCampos();
-        }else{
-            
+            ProductoActual = null;
+        } else {
+
             mensaje("No hay un producto seleccionado");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // TODO add your handling code here:
-        
+
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jBCambiarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCambiarEstadoActionPerformed
+        // TODO add your handling code here:
+
+        if (ProductoActual != null) {
+
+            prodD.cambiarEstadoProducto(ProductoActual.getIdProducto());
+
+        }
+    }//GEN-LAST:event_jBCambiarEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBCambiarEstado;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
@@ -333,7 +382,7 @@ public class Productos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTStock;
     // End of variables declaration//GEN-END:variables
 private void limpiarCampos() {
-        
+
         jTDescripcion.setText("");
         jTIdProducto.setText("");
         jTNombreProducto.setText("");

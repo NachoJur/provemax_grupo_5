@@ -29,7 +29,7 @@ public class ProductoData {
         String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, estado)" + " VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
+
             ps.setString(1, producto.getNombreProducto());
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
@@ -53,7 +53,7 @@ public class ProductoData {
         String sql = "UPDATE producto SET  nombreProducto=?, descripcion=?, precioActual=?, stock=?, estado=? WHERE idProducto=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, producto.getNombreProducto());
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
@@ -72,7 +72,7 @@ public class ProductoData {
 
     public Producto buscarProducto(int id) {
 
-        String sql = "SELECT nombreProducto, descripcion, precioActual, stock FROM producto WHERE idProducto = ? AND estado = 1";
+        String sql = "SELECT nombreProducto, descripcion, precioActual, stock, estado FROM producto WHERE idProducto = ?";
         Producto producto = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class ProductoData {
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
-                producto.setEstado(true);
+                producto.setEstado(rs.getBoolean("estado"));
             } else {
                 mensaje("No existe ese producto");
             }
@@ -98,16 +98,29 @@ public class ProductoData {
     }
 
     public void eliminarProducto(int idProducto) {
-        String sql = "UPDATE producto SET estado = 0 WHERE idProducto = ?";
+        String sqlCheck = "SELECT stock FROM producto WHERE idProducto = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idProducto);
-            int fila = ps.executeUpdate();
+            PreparedStatement psCheck = con.prepareStatement(sqlCheck);
+            psCheck.setInt(1, idProducto);
+            ResultSet rs = psCheck.executeQuery();
+            if (rs.next()) {
+                int stock = rs.getInt("stock");
+                if (stock > 0) {
+                    mensaje("No se puede eliminar el producto porque todavía hay productos en stock");
+                } else {
+                    String sqlDelete = "DELETE FROM producto WHERE idProducto = ?";
+                    PreparedStatement psDelete = con.prepareStatement(sqlDelete);
+                    psDelete.setInt(1, idProducto);
+                    int fila = psDelete.executeUpdate();
 
-            if (fila == 1) {
-                mensaje("Se elimino el producto");
+                    if (fila == 1) {
+                        mensaje("Se elimino el producto");
+                    }
+                    psDelete.close();
+                }
             }
-            ps.close();
+            rs.close();
+            psCheck.close();
         } catch (SQLException ex) {
             mensaje("Error al acceder a la tabla productos");
         }
@@ -150,13 +163,39 @@ public class ProductoData {
                 nombreProducto = rs.getString("nombreProducto");
             }
             ps.close();
-            
+
             if (stock < 3) { // Se verifica si el stock es menor a 3
                 mensaje("El electrodomestico " + nombreProducto + " tiene un stock por debajo del minimo establecido: " + stock + " unidades");
             }
         } catch (SQLException ex) {
             mensaje("Error al acceder a la tabla de productos");
         }
-
     }
+
+    public void cambiarEstadoProducto(int id) {
+    String sqlGet = "SELECT estado FROM producto WHERE idProducto = ?";
+    String sqlUpdate = "UPDATE producto SET estado = ? WHERE idProducto = ?";
+    try {
+        PreparedStatement psGet = con.prepareStatement(sqlGet);
+        psGet.setInt(1, id);
+        ResultSet rs = psGet.executeQuery();
+        if (rs.next()) {
+            boolean estadoActual = rs.getBoolean("estado");
+            boolean nuevoEstado = !estadoActual; // Cambia el estado
+            PreparedStatement psUpdate = con.prepareStatement(sqlUpdate);
+            psUpdate.setBoolean(1, nuevoEstado);
+            psUpdate.setInt(2, id);
+            int rowsUpdated = psUpdate.executeUpdate();
+            if (rowsUpdated > 0) {
+                mensaje("El estado del producto ha sido actualizado exitosamente");
+            }
+            psUpdate.close();
+        } else {
+            mensaje("No existe un producto con ese ID");
+        }
+        psGet.close();
+    } catch (SQLException ex) {
+        mensaje("Error al actualizar el estado del producto");
+    }
+}
 }
