@@ -278,9 +278,9 @@ public class Productos extends javax.swing.JInternalFrame {
                 jRBEstado.setSelected(ProductoActual.isEstado());
                 jTPrecioActual.setText(String.valueOf(ProductoActual.getPrecioActual()));
                 jTStock.setText(String.valueOf(ProductoActual.getStock()));
-            if (ProductoActual.getStock() <= 3) {
-                mensajes("¡ATENCIÓN! El Stock se encuentra por debajo del limite establecido");
-            }
+                if (ProductoActual.getStock() <= 3) {
+                    mensajes("¡ATENCIÓN! El Stock se encuentra por debajo del limite establecido");
+                }
             }
 
         } catch (NumberFormatException ex) {
@@ -316,7 +316,7 @@ public class Productos extends javax.swing.JInternalFrame {
                 ProductoActual.setEstado(estado);
                 prodD.modificarUnProducto(ProductoActual);
             }
-           
+
         } catch (NumberFormatException nfe) {
 
             if (jTIdProducto.getText().matches("[^0-9]")) {
@@ -334,9 +334,13 @@ public class Productos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         if (ProductoActual != null) {
-
-            prodD.eliminarProducto(ProductoActual.getIdProducto());
-            ProductoActual = null;
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres eliminar este producto?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+            
+            if (respuesta == JOptionPane.YES_OPTION) {
+                prodD.eliminarProducto(ProductoActual.getIdProducto());
+                ProductoActual = null;
+            }
+            
         } else {
 
             mensaje("No hay un producto seleccionado");
