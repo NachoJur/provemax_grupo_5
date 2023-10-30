@@ -74,7 +74,7 @@ public class Productos extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setBackground(new java.awt.Color(0, 204, 0));
-        jBNuevo.setText("Nuevo");
+        jBNuevo.setText("Limpiar");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
@@ -120,7 +120,7 @@ public class Productos extends javax.swing.JInternalFrame {
         jLabel7.setText("Estado");
 
         jBBuscar.setBackground(new java.awt.Color(204, 255, 204));
-        jBBuscar.setText("Buscar");
+        jBBuscar.setText("Buscar por Id");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -284,7 +284,7 @@ public class Productos extends javax.swing.JInternalFrame {
             }
 
         } catch (NumberFormatException ex) {
-            mensajes("Debe ingresar un codigo válido");
+            mensajes("Debe ingresar un número de Id válido");
 
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -293,22 +293,23 @@ public class Productos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
 
         try {
-            Integer idProducto = Integer.parseInt(jTIdProducto.getText());
+            
             String nombreProducto = jTNombreProducto.getText();
             String descripcion = jTDescripcion.getText();
             Double precioActual = Double.parseDouble(jTPrecioActual.getText());
             Integer stock = Integer.parseInt(jTStock.getText());
 
             if (nombreProducto.isEmpty() || descripcion.isEmpty()) {
-                mensaje("No puede haber campos vacios");
+                mensaje("El unico campo que debe estar vacio es Id Producto");
                 return;
             }
             boolean estado = jRBEstado.isSelected();
+            
             if (ProductoActual == null) {
-                ProductoActual = new Producto(idProducto, nombreProducto, descripcion, precioActual, stock, estado);
+                ProductoActual = new Producto(nombreProducto, descripcion, precioActual, stock, estado);
                 prodD.guardarProducto(ProductoActual);
             } else {
-                ProductoActual.setIdProducto(idProducto);
+                
                 ProductoActual.setNombreProducto(nombreProducto);
                 ProductoActual.setDescripcion(descripcion);
                 ProductoActual.setPrecioActual(precioActual);
@@ -319,9 +320,7 @@ public class Productos extends javax.swing.JInternalFrame {
 
         } catch (NumberFormatException nfe) {
 
-            if (jTIdProducto.getText().matches("[^0-9]")) {
-                mensaje("Debe ingresar un ID de producto válido");
-            } else if (jTPrecioActual.getText().matches("[^0-9.]")) {
+            if (jTPrecioActual.getText().matches("[^0-9.]")) {
                 mensaje("Debe ingresar un precio válido y separando la parte entera de la decimal con un punto");
             } else if (jTStock.getText().matches("[^0-9]")) {
                 mensaje("Debe ingresar un numero entero");
