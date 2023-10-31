@@ -70,6 +70,8 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         jBpopular = new javax.swing.JButton();
         AYUDA = new javax.swing.JButton();
         comprapopu = new javax.swing.JButton();
+        AYUDA2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(1, 102, 102));
 
@@ -116,26 +118,26 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DETALLES DE COMPRA");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("ID DETALLE");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("CANTIDAD");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setText("PRECIO/COSTO");
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("ID COMPRA");
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel6.setForeground(new java.awt.Color(153, 0, 0));
         jLabel6.setText("ID PRODUCTO");
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel7.setForeground(new java.awt.Color(153, 0, 0));
         jLabel7.setText("ESTADO");
 
         jRestado.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +166,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
             }
         });
 
-        AYUDA.setText("AYUDA");
+        AYUDA.setText("AYUDA BOTONES");
         AYUDA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AYUDAActionPerformed(evt);
@@ -175,6 +177,20 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         comprapopu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comprapopuActionPerformed(evt);
+            }
+        });
+
+        AYUDA2.setText("AYUDA CAMPOS");
+        AYUDA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AYUDA2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("PROVEEDOR Y PRODUCTO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -216,24 +232,29 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addComponent(jTcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AYUDA))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTidpro, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-                                        .addComponent(jTidde)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comprapopu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBpopular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(AYUDA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AYUDA2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTidpro, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                                            .addComponent(jTidde)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(comprapopu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jBpopular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
+                                .addGap(20, 20, 20)
+                                .addComponent(jButton1)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -246,7 +267,8 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTidde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTidde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AYUDA2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -270,10 +292,12 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTidpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jBpopular)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBpopular)
+                            .addComponent(jButton1))))
                 .addGap(18, 18, 18)
                 .addComponent(comprapopu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -427,6 +451,9 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     }
 
     jTdetalles.setModel(modelo);
+    
+    
+    
     }//GEN-LAST:event_jBpopularActionPerformed
 
     private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
@@ -434,7 +461,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRestadoActionPerformed
 
     private void AYUDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDAActionPerformed
-        JOptionPane.showMessageDialog(this, "AYUDA: ");
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS BOTONES: lea atentamente los siguientes carteles ");
         JOptionPane.showMessageDialog(this,"GUARDAR: sirve para guardar o modificar un detalle de compra, para modificar asegurese de haber buscado su detalle con el boton BUSCAR ");
         JOptionPane.showMessageDialog(this,"ELIMINAR:sirve para elimanar un detalle de compra ");
         JOptionPane.showMessageDialog(this,"LIMPIAR: limpia los campos de texto  ");
@@ -443,7 +470,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this,"SALIR: sale de la aplicacion   ");
         JOptionPane.showMessageDialog(this,"PRODUCTO POPULAR: llena la tabla con aquellos productos mas populares en funcion del campo id producto ");
         JOptionPane.showMessageDialog(this,"COMPRAS AL PROVEEDOR: llena la tabla con aquellas compras mas populares en funcion del campo id compra, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS ");
-        
+        JOptionPane.showMessageDialog(this,"PRODUCTOS Y PROVEEDOR: llena la tabla con aquellas compras mas populares en funcion del campo id compra, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS ");
     }//GEN-LAST:event_AYUDAActionPerformed
 
     private void comprapopuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprapopuActionPerformed
@@ -481,7 +508,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     StringBuilder mensaje = new StringBuilder("Repeticiones de IdCompra:\n");
     for (int idCompra : detallePorCompra.keySet()) {
         int repeticiones = detallePorCompra.get(idCompra).size();
-        mensaje.append("IdCompra ").append(idCompra).append(": ").append(repeticiones).append(" veces\n");
+        mensaje.append("PROVEEDOR (IdCompra) ").append(idCompra).append(": ").append(repeticiones).append(" veces\n");
     }
     
     // Mostrar el mensaje con la cantidad de repeticiones
@@ -489,6 +516,67 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_comprapopuActionPerformed
+
+    private void AYUDA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDA2ActionPerformed
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS CAMPOS DE TEXTO: lea atentamente los siguientes carteles para saber que datos cargar");
+        JOptionPane.showMessageDialog(this,"ID DETALLE: en este campo debera ir el ID de su detalle en cual servira para cear un nuevo detalle o la busqueda o modificacion de uno ya existente ");
+        JOptionPane.showMessageDialog(this,"CANTIDAD: debera indicar cuantas existencias desea adquirir de dicho producto");
+        JOptionPane.showMessageDialog(this,"PRECIO/COSTO: debere colocar el costo del total del prodcuto");
+        JOptionPane.showMessageDialog(this,"ID COMPRA: debera colocar el numero ID de su compra para poder acercarle al proveedor, consultle el ID en compras");
+        JOptionPane.showMessageDialog(this,"ID PRODUCTO: debera colocar el numero ID del producto que desea ordenar, consulte el ID en productos por nombre");
+        JOptionPane.showMessageDialog(this,"ESTADO: indica si el detalle se encuentra activado y listo para  cargar o desactivado y a la espera");
+        JOptionPane.showMessageDialog(this,"ADVERTENCIA: EVITE INGRESAR DATOS ALFABETICOS O ERRONEOS EN LOS CAMPOS");
+       
+    }//GEN-LAST:event_AYUDA2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+    listaD = (ArrayList<DetalleCompra>) deData.obtenerDetalles();
+
+    // Usar un HashMap para agrupar DetalleCompra por IdCompra
+    Map<Integer, List<DetalleCompra>> detallePorCompra = new HashMap<>();
+
+    for (DetalleCompra d : listaD) {
+        int idCompra = d.getCompra().getIdCompra();
+
+        if (!detallePorCompra.containsKey(idCompra)) {
+            detallePorCompra.put(idCompra, new ArrayList<>());
+        }
+
+        detallePorCompra.get(idCompra).add(d);
+    }
+
+    // Actualizar el modelo de la tabla
+    modelo = (DefaultTableModel) jTdetalles.getModel();
+    modelo.setRowCount(0);
+
+    for (List<DetalleCompra> grupo : detallePorCompra.values()) {
+        if (grupo.size() > 1) {
+            for (DetalleCompra d : grupo) {
+                modelo.addRow(new Object[]{d.getIdDetalle(), d.getCantidad(), d.getPrecioCosto(), d.getCompra().getIdCompra(), d.getProducto().getIdProducto()});
+            }
+        }
+    }
+
+    jTdetalles.setModel(modelo);
+
+    // Crear un mensaje con los IdProducto para cada IdCompra
+    StringBuilder mensaje = new StringBuilder("IdProducto para cada IdCompra:\n");
+    for (int idCompra : detallePorCompra.keySet()) {
+        mensaje.append("PROVEEDOR (IdCompra) ").append(idCompra).append(": ");
+        List<DetalleCompra> compras = detallePorCompra.get(idCompra);
+        for (DetalleCompra d : compras) {
+            mensaje.append(d.getProducto().getIdProducto()).append(", ");
+        }
+        mensaje.delete(mensaje.length() - 2, mensaje.length());  // Eliminar la coma al final
+        mensaje.append("\n");
+    }
+
+    // Mostrar el mensaje con los IdProducto para cada IdCompra
+    JOptionPane.showMessageDialog(this, mensaje.toString());
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
  private void limpiarCampos(){
         jTidpro.setText("");
@@ -502,6 +590,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AYUDA;
+    private javax.swing.JButton AYUDA2;
     private javax.swing.JButton comprapopu;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
@@ -510,6 +599,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBlistar;
     private javax.swing.JButton jBpopular;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
