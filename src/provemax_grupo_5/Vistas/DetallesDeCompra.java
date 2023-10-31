@@ -462,7 +462,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
 
     private void AYUDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDAActionPerformed
         JOptionPane.showMessageDialog(this, "AYUDA CON LOS BOTONES: lea atentamente los siguientes carteles ");
-        JOptionPane.showMessageDialog(this,"GUARDAR: sirve para guardar o modificar un detalle de compra, para modificar asegurese de haber buscado su detalle con el boton BUSCAR ");
+        JOptionPane.showMessageDialog(this,"GUARDAR: sirve para guardar o modificar un detalle de compra, para modificar asegurese de haber buscado su ID detalle con el boton BUSCAR ");
         JOptionPane.showMessageDialog(this,"ELIMINAR:sirve para elimanar un detalle de compra ");
         JOptionPane.showMessageDialog(this,"LIMPIAR: limpia los campos de texto  ");
         JOptionPane.showMessageDialog(this,"BUSCAR: buscar un detalle de compra teniendo en cuenta el campo id detalle   ");

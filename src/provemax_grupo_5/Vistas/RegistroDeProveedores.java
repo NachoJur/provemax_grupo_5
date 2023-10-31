@@ -194,10 +194,25 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         });
 
         AYUDA.setText("AYUDA BOTONES");
+        AYUDA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AYUDAActionPerformed(evt);
+            }
+        });
 
         AYUDA2.setText("AYUDA CAMPOS");
+        AYUDA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AYUDA2ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("LISTAR-");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -290,7 +305,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRestado)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -420,6 +435,46 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
         } 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AYUDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDAActionPerformed
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS BOTONES: lea atentamente los siguientes carteles ");
+        JOptionPane.showMessageDialog(this,"GUARDAR: sirve para guardar o modificar un proveedor, para modificar asegurese de haber buscado su ID con el boton BUSCAR ");
+        JOptionPane.showMessageDialog(this,"ELIMINAR:sirve para elimanar un proveedor,asegurese de haber buscado su ID con el boton BUSCAR");
+        JOptionPane.showMessageDialog(this,"ACTIVAR:sirve para activarar un proveedor,asegurese de haber buscado su ID con el boton BUSCAR-");
+        JOptionPane.showMessageDialog(this,"LIMPIAR: limpia los campos de texto  ");
+        JOptionPane.showMessageDialog(this,"BUSCAR: buscar un proveedor activo teniendo en cuenta el campo id detalle");
+        JOptionPane.showMessageDialog(this,"BUSCAR-: buscar un proveedor eliminado teniendo en cuenta el campo id detalle");
+        JOptionPane.showMessageDialog(this,"LISTAR: llena la tabla con los proveedores activos");
+        JOptionPane.showMessageDialog(this,"LISTAR-: llena la tabla con los proveedores eliminados");
+        JOptionPane.showMessageDialog(this,"SALIR: sale de la aplicacion");
+        
+    }//GEN-LAST:event_AYUDAActionPerformed
+
+    private void AYUDA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDA2ActionPerformed
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS CAMPOS DE TEXTO: lea atentamente los siguientes carteles para saber que datos cargar");
+        JOptionPane.showMessageDialog(this,"ID PROVEEDORES: en este campo debera ir el ID del proveedor servira para cear un nuevo proveedor o la busqueda o modificacion de uno ya existente ");
+        JOptionPane.showMessageDialog(this,"RAZON SOCIAL: debera colocar la razon social del proveedor");
+        JOptionPane.showMessageDialog(this,"DOMICILIO: debere colocar la residencia del proveedor");
+        JOptionPane.showMessageDialog(this,"TELEFONO: debera colocar el numero de telefono del proveedor");
+        JOptionPane.showMessageDialog(this,"ESTADO: indica si el proveedor se encuentra activado o eliminado");
+        JOptionPane.showMessageDialog(this,"ADVERTENCIA: EVITE INGRESAR DATOS ERRONEOS EN LOS CAMPOS");
+    }//GEN-LAST:event_AYUDA2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        listaP = (ArrayList<Proveedor>) proData.listarProveedoresne();
+
+    
+    modelo = (DefaultTableModel) jTable1.getModel();
+
+    
+    modelo.setRowCount(0);
+
+    for (Proveedor p : listaP) {
+        modelo.addRow(new Object[]{p.getIdProveedor(), p.getRazonSocial(), p.getDomicilio(),p.getTelefono(),p.isEstado()});
+    }
+
+    jTable1.setModel(modelo);
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void limpiarCampos(){
         jTidpro.setText("");
         jTrazonssocial.setText("");
