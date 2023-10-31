@@ -35,6 +35,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
     public DetallesDeCompra() {
         initComponents();
+        JOptionPane.showMessageDialog(this, "BIENVENIDO, para mas informacion pulse los botones AYUDA");
     }
 
     /** This method is called from within the constructor to
@@ -203,15 +204,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jBguardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBeliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBlimpiar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBbuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBlistar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBsalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
@@ -232,7 +225,6 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addComponent(jTcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -254,7 +246,18 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                                         .addComponent(comprapopu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jBpopular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton1)))))
+                                .addComponent(jButton1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jBeliminar)
+                                    .addGap(63, 63, 63)
+                                    .addComponent(jBlimpiar)
+                                    .addGap(65, 65, 65)
+                                    .addComponent(jBbuscar)
+                                    .addGap(55, 55, 55)
+                                    .addComponent(jBlistar))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -297,7 +300,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                             .addComponent(jButton1))))
                 .addGap(18, 18, 18)
                 .addComponent(comprapopu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -470,7 +473,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this,"SALIR: sale de la aplicacion   ");
         JOptionPane.showMessageDialog(this,"PRODUCTO POPULAR: llena la tabla con aquellos productos mas populares en funcion del campo id producto ");
         JOptionPane.showMessageDialog(this,"COMPRAS AL PROVEEDOR: llena la tabla con aquellas compras mas populares en funcion del campo id compra, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS ");
-        JOptionPane.showMessageDialog(this,"PRODUCTOS Y PROVEEDOR: llena la tabla con aquellas compras mas populares en funcion del campo id compra, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS ");
+        JOptionPane.showMessageDialog(this,"PRODUCTOS Y PROVEEDOR: llena la tabla con aquellas productos mas populares en funcion del campo id producto, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS");
     }//GEN-LAST:event_AYUDAActionPerformed
 
     private void comprapopuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprapopuActionPerformed
@@ -509,10 +512,11 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     for (int idCompra : detallePorCompra.keySet()) {
         int repeticiones = detallePorCompra.get(idCompra).size();
         mensaje.append("PROVEEDOR (IdCompra) ").append(idCompra).append(": ").append(repeticiones).append(" veces\n");
+         
     }
     
     // Mostrar el mensaje con la cantidad de repeticiones
-    JOptionPane.showMessageDialog(this, mensaje.toString());
+    JOptionPane.showMessageDialog(this, mensaje.toString()+"con estos numeros puede consultar su PROVEEDOR en proveedores: registro de proveedores");
 
 
     }//GEN-LAST:event_comprapopuActionPerformed
@@ -570,10 +574,12 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         }
         mensaje.delete(mensaje.length() - 2, mensaje.length());  // Eliminar la coma al final
         mensaje.append("\n");
+        
     }
 
     // Mostrar el mensaje con los IdProducto para cada IdCompra
-    JOptionPane.showMessageDialog(this, mensaje.toString());
+    JOptionPane.showMessageDialog(this, mensaje.toString()+"con estos numeros puede consultar su producto en productos por nombre en consultas");
+     
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

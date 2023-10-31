@@ -25,7 +25,9 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
     public RegistroDeProveedores() {
         initComponents();
+        JOptionPane.showMessageDialog(this, "BIENVENIDO, para mas informacion pulse los botones AYUDA");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
