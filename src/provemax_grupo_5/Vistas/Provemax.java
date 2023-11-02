@@ -47,6 +47,7 @@ public class Provemax extends javax.swing.JFrame {
         jMCompra = new javax.swing.JMenu();
         jMICompraProductos = new javax.swing.JMenuItem();
         jMIDetalle = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMProductos = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
@@ -93,6 +94,14 @@ public class Provemax extends javax.swing.JFrame {
             }
         });
         jMCompra.add(jMIDetalle);
+
+        jMenuItem4.setText("Todas Las Compras a un proveedor");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMCompra.add(jMenuItem4);
 
         jMenuBar1.add(jMCompra);
 
@@ -230,6 +239,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(fecha);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        TodasLasComprasAUnProveedor tcp = new TodasLasComprasAUnProveedor();
+        tcp.setVisible(true);
+        escritorio.add(tcp);
+        escritorio.moveToFront(tcp);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,6 +298,7 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jmiProdFecha;
     private javax.swing.JMenu pXNombre;
     // End of variables declaration//GEN-END:variables

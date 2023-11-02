@@ -76,7 +76,7 @@ public class Proveedor {
 
     @Override
     public String toString() {
-        return   idProveedor + " " + razonSocial + " " + domicilio + " "  + telefono + " "  + estado ;
+        return   idProveedor + " " + razonSocial  ;
     }
 
     
