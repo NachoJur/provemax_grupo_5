@@ -16,6 +16,7 @@ import provemax_grupo_5.AccesoADatos.CompraData;
 import provemax_grupo_5.AccesoADatos.ProductoData;
 import provemax_grupo_5.AccesoADatos.ProveedorData;
 import provemax_grupo_5.Entidades.Compra;
+import provemax_grupo_5.Entidades.Producto;
 import provemax_grupo_5.Entidades.Proveedor;
 
 /**
@@ -26,6 +27,7 @@ public class Compras extends javax.swing.JInternalFrame {
     public CompraData compData = new CompraData();
     public Compra compNueva = null;
     private List<Proveedor>listProv;
+    private List<Producto>listProd;
     ProveedorData provDta = new ProveedorData();
     ProductoData prodDta = new ProductoData();
     /**
@@ -34,7 +36,9 @@ public class Compras extends javax.swing.JInternalFrame {
     public Compras() {
         initComponents();
         listProv = provDta.listarProveedores();
+        listProd = prodDta.listarProductos();
         cargarProveedor();
+        cargarProductos();
     }
 
     /**
@@ -50,11 +54,11 @@ public class Compras extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jtfProducto = new javax.swing.JTextField();
         jBRegistrar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
         jcbProveedor = new javax.swing.JComboBox<>();
         jdcFecha = new com.toedter.calendar.JDateChooser();
+        jcbProducto = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 102));
         setClosable(true);
@@ -66,15 +70,13 @@ public class Compras extends javax.swing.JInternalFrame {
         jLabel1.setText("COMPRA");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("* Ingrese el producto: ");
+        jLabel2.setText("* Seleccione un producto: ");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("* Ingrese el proveedor: ");
+        jLabel3.setText("* Seleccione un proveedor: ");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("* Ingrese la fecha: ");
-
-        jtfProducto.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
 
         jBRegistrar.setBackground(new java.awt.Color(255, 51, 51));
         jBRegistrar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
@@ -101,56 +103,51 @@ public class Compras extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(jLabel1)
+                .addContainerGap(207, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jBRegistrar)
+                        .addComponent(jLabel4)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jBRegistrar)
-                        .addGap(118, 118, 118)
-                        .addComponent(jBCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcbProveedor, 0, 190, Short.MAX_VALUE)
+                            .addComponent(jcbProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jdcFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jcbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtfProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(30, 30, 30)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBCancelar)
+                        .addGap(88, 88, 88))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jcbProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jcbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 154, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBRegistrar)
-                            .addComponent(jBCancelar))
-                        .addGap(51, 51, 51))))
+                    .addComponent(jLabel4)
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBRegistrar)
+                    .addComponent(jBCancelar))
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -161,23 +158,18 @@ public class Compras extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarActionPerformed
-        String producto = jtfProducto.getText();
+        Producto producto = (Producto)jcbProducto.getSelectedItem();
         Proveedor prov = (Proveedor)jcbProveedor.getSelectedItem();
         java.util.Date fecha = jdcFecha.getDate();
-        LocalDate fech = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        if(producto.isEmpty()){
-            JOptionPane.showMessageDialog(this, "");
-            return;
-        }
-        if(compNueva == null){
-            compNueva = new Compra(prov,fech);
-            compData.registrarCompra(compNueva);
+        if(fecha != null){
+            LocalDate fech = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if(compNueva == null){
+                compNueva = new Compra(prov,fech);
+                compData.registrarCompra(compNueva);
+            }
         }else{
-            compNueva.setProveedor(prov);
-            compNueva.setFecha(fech);
-            compData.modificarCompra(compNueva);
+            JOptionPane.showMessageDialog(this, "Solo debe ingresar numeros");
         }
-        limpiarCampos();
     }//GEN-LAST:event_jBRegistrarActionPerformed
 
 
@@ -188,19 +180,21 @@ public class Compras extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox<Producto> jcbProducto;
     private javax.swing.JComboBox<Proveedor> jcbProveedor;
     private com.toedter.calendar.JDateChooser jdcFecha;
-    private javax.swing.JTextField jtfProducto;
     // End of variables declaration//GEN-END:variables
     
-    public void limpiarCampos(){
-        jtfProducto.setText("");
-        jdcFecha.setDate(new Date());
-    }
     
     public void cargarProveedor(){
         for (Proveedor item:listProv){
             jcbProveedor.addItem(item);
+        }
+    }
+    
+    public void cargarProductos(){
+        for(Producto item:listProd){
+            jcbProducto.addItem(item);
         }
     }
 }
