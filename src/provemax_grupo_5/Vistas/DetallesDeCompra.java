@@ -74,6 +74,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         AYUDA2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(1, 102, 102));
 
@@ -201,6 +202,13 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         jLabel8.setMaximumSize(new java.awt.Dimension(40, 14));
         jLabel8.setMinimumSize(new java.awt.Dimension(40, 14));
 
+        jButton2.setText("ULTIMO DETALLE");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,12 +255,13 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jRestado))
-                                    .addComponent(jBpopular, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jBpopular, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(comprapopu, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -309,7 +318,9 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBpopular)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -483,6 +494,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this,"PRODUCTO POPULAR: llena la tabla con aquellos productos mas populares en funcion del campo id producto ");
         JOptionPane.showMessageDialog(this,"COMPRAS AL PROVEEDOR: llena la tabla con aquellas compras mas populares en funcion del campo id compra, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS ");
         JOptionPane.showMessageDialog(this,"PRODUCTOS Y PROVEEDOR: llena la tabla con aquellas productos mas populares en funcion del campo id producto, con ese id compra se puede llegar al id proveedor en COMPRA PRODUCTOS");
+         JOptionPane.showMessageDialog(this,"ULTIMO DETALLE: muestra en la tabla el ultimo detalle cargado osea la ultima orden de compra de un prodcuto");
     }//GEN-LAST:event_AYUDAActionPerformed
 
     private void comprapopuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprapopuActionPerformed
@@ -593,6 +605,33 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        listaD = (ArrayList<DetalleCompra>) deData.obtenerDetalles();
+
+    // Verificar si hay detalles disponibles
+    if (!listaD.isEmpty()) {
+        // Obtener el último DetalleCompra de la lista
+        DetalleCompra ultimoDetalle = listaD.get(listaD.size() - 1);
+
+        // Inicializar el modelo de la tabla
+        modelo = (DefaultTableModel) jTdetalles.getModel();
+
+        // Limpiar el modelo de la tabla
+        modelo.setRowCount(0);
+
+        // Agregar el último DetalleCompra a la tabla
+        modelo.addRow(new Object[]{ultimoDetalle.getIdDetalle(), ultimoDetalle.getCantidad(), ultimoDetalle.getPrecioCosto(), ultimoDetalle.getCompra().getIdCompra(), ultimoDetalle.getProducto().getIdProducto()});
+
+        jTdetalles.setModel(modelo);
+        
+        // Mostrar un mensaje con el IdProducto del último detalle
+        JOptionPane.showMessageDialog(this, "El último producto comprado tiene el IdProducto: " + ultimoDetalle.getProducto().getIdProducto()+" consulte su producto en consultas: productos por nombre");
+    } else {
+        // Si no hay detalles disponibles, mostrar un mensaje al usuario
+        JOptionPane.showMessageDialog(this, "No hay detalles disponibles.");
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
  private void limpiarCampos(){
         jTidpro.setText("");
         jTidcom.setText("");
@@ -615,6 +654,7 @@ public class DetallesDeCompra extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBpopular;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
