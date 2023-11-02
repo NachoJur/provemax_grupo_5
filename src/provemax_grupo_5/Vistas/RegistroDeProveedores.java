@@ -25,7 +25,9 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo;
     public RegistroDeProveedores() {
         initComponents();
+        JOptionPane.showMessageDialog(this, "BIENVENIDO, para mas informacion pulse los botones AYUDA");
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,8 +61,10 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         jTdomicilio = new javax.swing.JTextField();
         jTtelefono = new javax.swing.JTextField();
         jRestado = new javax.swing.JRadioButton();
-        jLESTADO = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        AYUDA = new javax.swing.JButton();
+        AYUDA2 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -98,7 +102,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(1, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setText("REGISTRO DE PROVEEDORES");
 
         jBsalir.setText("SALIR");
@@ -163,19 +167,19 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("ID PROVEEDORES");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("RAZON SOCIAL");
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setText("DOMICILIO");
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel5.setForeground(new java.awt.Color(153, 0, 0));
         jLabel5.setText("TELEFONO");
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel6.setForeground(new java.awt.Color(153, 0, 0));
         jLabel6.setText("ESTADO");
 
         jRestado.addActionListener(new java.awt.event.ActionListener() {
@@ -184,13 +188,31 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
             }
         });
 
-        jLESTADO.setForeground(new java.awt.Color(255, 255, 0));
-        jLESTADO.setText("ACTIVO");
-
         jButton1.setText("BUSCAR-");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        AYUDA.setText("AYUDA BOTONES");
+        AYUDA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AYUDAActionPerformed(evt);
+            }
+        });
+
+        AYUDA2.setText("AYUDA CAMPOS");
+        AYUDA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AYUDA2ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("LISTAR-");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -199,25 +221,37 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jBguardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBeliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jBactivar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jBlimpiar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jBbuscar))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBlistar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBsalir)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBguardar)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBeliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBactivar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBlimpiar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBbuscar))
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBlistar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                                .addComponent(jBsalir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(68, 68, 68)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(AYUDA2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AYUDA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -235,9 +269,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jRestado)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLESTADO))
+                        .addComponent(jRestado))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,9 +281,13 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(AYUDA))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AYUDA2)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTidpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -263,24 +299,20 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRestado)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLESTADO)
-                        .addGap(18, 18, 18)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRestado)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBsalir)
@@ -371,10 +403,7 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBlimpiarActionPerformed
 
     private void jRestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRestadoActionPerformed
- jRestado.setSelected(true);
-        jLESTADO.setText("ACTIVO");
-         jRestado.setSelected(false);
-         jLESTADO.setText("INACTIVO");        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_jRestadoActionPerformed
 
     private void jBlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBlistarActionPerformed
@@ -408,17 +437,59 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this, "debe ingresar un numero valido");
         } 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void AYUDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDAActionPerformed
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS BOTONES: lea atentamente los siguientes carteles ");
+        JOptionPane.showMessageDialog(this,"GUARDAR: sirve para guardar o modificar un proveedor, para modificar asegurese de haber buscado su ID con el boton BUSCAR ");
+        JOptionPane.showMessageDialog(this,"ELIMINAR:sirve para elimanar un proveedor,asegurese de haber buscado su ID con el boton BUSCAR");
+        JOptionPane.showMessageDialog(this,"ACTIVAR:sirve para activarar un proveedor,asegurese de haber buscado su ID con el boton BUSCAR-");
+        JOptionPane.showMessageDialog(this,"LIMPIAR: limpia los campos de texto  ");
+        JOptionPane.showMessageDialog(this,"BUSCAR: buscar un proveedor activo teniendo en cuenta el campo id detalle");
+        JOptionPane.showMessageDialog(this,"BUSCAR-: buscar un proveedor eliminado teniendo en cuenta el campo id detalle");
+        JOptionPane.showMessageDialog(this,"LISTAR: llena la tabla con los proveedores activos");
+        JOptionPane.showMessageDialog(this,"LISTAR-: llena la tabla con los proveedores eliminados");
+        JOptionPane.showMessageDialog(this,"SALIR: sale de la aplicacion");
+        
+    }//GEN-LAST:event_AYUDAActionPerformed
+
+    private void AYUDA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AYUDA2ActionPerformed
+        JOptionPane.showMessageDialog(this, "AYUDA CON LOS CAMPOS DE TEXTO: lea atentamente los siguientes carteles para saber que datos cargar");
+        JOptionPane.showMessageDialog(this,"ID PROVEEDORES: en este campo debera ir el ID del proveedor servira para cear un nuevo proveedor o la busqueda o modificacion de uno ya existente ");
+        JOptionPane.showMessageDialog(this,"RAZON SOCIAL: debera colocar la razon social del proveedor");
+        JOptionPane.showMessageDialog(this,"DOMICILIO: debere colocar la residencia del proveedor");
+        JOptionPane.showMessageDialog(this,"TELEFONO: debera colocar el numero de telefono del proveedor");
+        JOptionPane.showMessageDialog(this,"ESTADO: indica si el proveedor se encuentra activado o eliminado");
+        JOptionPane.showMessageDialog(this,"ADVERTENCIA: EVITE INGRESAR DATOS ERRONEOS EN LOS CAMPOS");
+    }//GEN-LAST:event_AYUDA2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        listaP = (ArrayList<Proveedor>) proData.listarProveedoresne();
+
+    
+    modelo = (DefaultTableModel) jTable1.getModel();
+
+    
+    modelo.setRowCount(0);
+
+    for (Proveedor p : listaP) {
+        modelo.addRow(new Object[]{p.getIdProveedor(), p.getRazonSocial(), p.getDomicilio(),p.getTelefono(),p.isEstado()});
+    }
+
+    jTable1.setModel(modelo);
+    }//GEN-LAST:event_jButton2ActionPerformed
     private void limpiarCampos(){
         jTidpro.setText("");
         jTrazonssocial.setText("");
         jTdomicilio.setText(""); 
         jTtelefono.setText(""); 
         jRestado.setSelected(true);
-        
-        jLESTADO.setText("ACTIVO");
     }
+        
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AYUDA;
+    private javax.swing.JButton AYUDA2;
     private javax.swing.JButton jBactivar;
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
@@ -427,10 +498,10 @@ public class RegistroDeProveedores extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBlistar;
     private javax.swing.JButton jBsalir;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
-    private javax.swing.JLabel jLESTADO;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
