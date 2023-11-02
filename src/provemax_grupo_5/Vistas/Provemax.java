@@ -54,6 +54,7 @@ public class Provemax extends javax.swing.JFrame {
         pXNombre = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jmiProdFecha = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
         jMenuBar2.add(jMenu2);
@@ -137,6 +138,14 @@ public class Provemax extends javax.swing.JFrame {
         });
         pXNombre.add(jmiProdFecha);
 
+        jMenuItem3.setText("Productos entre dos fechas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        pXNombre.add(jMenuItem3);
+
         jMenuBar1.add(pXNombre);
 
         setJMenuBar(jMenuBar1);
@@ -212,6 +221,15 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(fech);
     }//GEN-LAST:event_jmiProdFechaActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ProductosPorDosFechas fecha = new ProductosPorDosFechas();
+        fecha.setVisible(true);
+        escritorio.add(fecha);
+        escritorio.moveToFront(fecha);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -261,6 +279,7 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jmiProdFecha;
     private javax.swing.JMenu pXNombre;
     // End of variables declaration//GEN-END:variables

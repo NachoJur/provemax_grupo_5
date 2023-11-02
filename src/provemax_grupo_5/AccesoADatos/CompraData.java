@@ -86,12 +86,33 @@ public class CompraData {
         return realizadas;
     }
     
-    public List<Compra> obtenerCompraPorFecha(LocalDate fechaCompra) throws SQLException{
+    public List<Compra> obtenerCompraPorFecha(LocalDate fechaCompra){
         String sql = "SELECT * FROM compra WHERE fecha = ?";
         ArrayList<Compra> realizadas = new ArrayList<>();
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaCompra));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Compra comp = new Compra();
+                comp.setIdCompra(rs.getInt("idCompra"));
+                ProveedorData prov = new ProveedorData();
+                comp.setProveedor(prov.buscarProveedor(rs.getInt("idProveedor")));
+                realizadas.add(comp);
+            }
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla compra: " + ex.getMessage());
+        }
+        return realizadas;
+    }
+    
+    public List<Compra> obtenerCompraPorFecha(LocalDate fecha1,LocalDate fecha2){
+        String sql = "SELECT * FROM compra WHERE fecha = ?";
+        ArrayList<Compra> realizadas = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fecha1));
+            ps.setDate(2, Date.valueOf(fecha2));
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Compra comp = new Compra();
