@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -24,9 +25,9 @@ import provemax_grupo_5.Entidades.Producto;
  */
 public class ProductosPorFecha extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
-    private Compra comp;
+    private List<Compra> comp;
+    private Compra com;
     private Producto pro;
-    LocalDate fechaActual = LocalDate.now();
     private ProductoData prodData = new ProductoData();
     private CompraData compData = new CompraData();
     
@@ -150,17 +151,17 @@ public class ProductosPorFecha extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         java.util.Date fecha = jdcFecha.getDate();
         if (fecha == null) {
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida.");
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha válida");
             return;
         }
         LocalDate fech = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         try {
-            comp = (Compra) compData.obtenerCompraPorFecha(fech);
+            comp = compData.obtenerCompraPorFecha(fech);
             if (comp != null) {
                 cargarDatos(fech);
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontraron compras para la fecha seleccionada.");
+            JOptionPane.showMessageDialog(this, "No se encontraron compras para la fecha seleccionada");
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
@@ -182,6 +183,6 @@ public class ProductosPorFecha extends javax.swing.JInternalFrame {
     }
     
     public void cargarDatos(LocalDate fech){
-        modelo.addRow(new Object[]{comp.getIdCompra(),comp.getProveedor(),pro.getNombreProducto()});
+        modelo.addRow(new Object[]{com.getIdCompra(),pro.getNombreProducto(),com.getProveedor()});
     }
 }
