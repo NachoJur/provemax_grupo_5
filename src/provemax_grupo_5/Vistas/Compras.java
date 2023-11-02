@@ -206,21 +206,17 @@ public class Compras extends javax.swing.JInternalFrame {
      Date selectedDate = jdcFecha.getDate();
     if (selectedDate != null) {
         LocalDate selectedLocalDate = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        try {
-            List<Compra> compras = compData.obtenerCompraPorFecha(selectedLocalDate);
-            if (compras.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No se encontraron compras en la fecha seleccionada.");
-            } else {
-                StringBuilder message = new StringBuilder("Compras encontradas en la fecha seleccionada:\n");
-                for (Compra compra : compras) {
-                    message.append("ID Compra: ").append(compra.getIdCompra()).append("\n");
-                    message.append("ID Proveedor: ").append(compra.getProveedor().getIdProveedor()).append("\n");
-                    //message.append("Fecha: ").append(compra.getFecha()).append("\n\n");
-                }
-                JOptionPane.showMessageDialog(this, message.toString());
+        List<Compra> compras = compData.obtenerCompraPorFecha(selectedLocalDate);
+        if (compras.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron compras en la fecha seleccionada.");
+        } else {
+            StringBuilder message = new StringBuilder("Compras encontradas en la fecha seleccionada:\n");
+            for (Compra compra : compras) {
+                message.append("ID Compra: ").append(compra.getIdCompra()).append("\n");
+                message.append("ID Proveedor: ").append(compra.getProveedor().getIdProveedor()).append("\n");
+                //message.append("Fecha: ").append(compra.getFecha()).append("\n\n");
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al buscar compras por fecha: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, message.toString());
         }
     } else {
         JOptionPane.showMessageDialog(this, "Por favor, seleccione una fecha antes de buscar compras.");
