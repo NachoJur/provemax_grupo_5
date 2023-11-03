@@ -144,6 +144,33 @@ public class DetalleCompraData {
         
     } return detalles;
 }
+    public List<DetalleCompra> obtenerDetallesDeCompra(int idCompra) {
+    String sql = "SELECT idDetalle, cantidad, precioCosto, idProducto FROM detallecompra WHERE idCompra = ? AND estado = 1";
+    ArrayList<DetalleCompra> detalles = new ArrayList<>();
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idCompra);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            DetalleCompra det = new DetalleCompra();
+            det.setIdDetalle(rs.getInt("idDetalle"));
+            det.setCantidad(rs.getInt("cantidad"));
+            det.setPrecioCosto(rs.getDouble("precioCosto"));
+            Producto pro = prodata.buscarProducto(rs.getInt("idProducto"));
+            det.setProducto(pro);
+            det.setEstado(true);
+            detalles.add(det);
+        }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle Compra: " + ex.getMessage());
+    }
+
+    return detalles;
+}
     
     
 }

@@ -7,7 +7,6 @@ package provemax_grupo_5.Vistas;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import provemax_grupo_5.AccesoADatos.CompraData;
 import provemax_grupo_5.AccesoADatos.DetalleCompraData;
@@ -22,12 +21,14 @@ import provemax_grupo_5.Entidades.Proveedor;
  *
  * @author nacho
  */
-public class TodasLasComprasAUnProveedor extends javax.swing.JInternalFrame {
+public class Todoslosproductosdeunacompraenparticular extends javax.swing.JInternalFrame {
+
     public CompraData compData = new CompraData();
     public Compra compNueva = null;
     private DetalleCompraData deData= new DetalleCompraData();
     private DetalleCompra deActual= null;
-    
+    private List<Compra>listcom;
+    private ArrayList<Compra>listc;
     private ProveedorData proData= new ProveedorData();
    private Proveedor proActual= null;
    private List<Proveedor>listaP;
@@ -35,11 +36,10 @@ public class TodasLasComprasAUnProveedor extends javax.swing.JInternalFrame {
    private ArrayList <DetalleCompra> listaD;
     ProductoData prodDta = new ProductoData();
     private DefaultTableModel modelo;
-    public TodasLasComprasAUnProveedor() {
-         initComponents();
-    listaP = proData.listarProveedores();
-    cargarProveedor();
-    
+    public Todoslosproductosdeunacompraenparticular() {
+        initComponents();
+        listcom=compData.listarCompras();
+        cargarcompra();
     }
 
     /**
@@ -52,13 +52,32 @@ public class TodasLasComprasAUnProveedor extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jcbProveedor = new javax.swing.JComboBox<>();
+        jcbcompra = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Todas las compras a un Proveedor");
+        jLabel1.setText("Todos los productos de una compra");
+
+        jcbcompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbcompraActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "PROVEEDOR", "PRODUCTO", "PRECIO", "CANTIDAD"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("SALIR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -67,56 +86,34 @@ public class TodasLasComprasAUnProveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbProveedor.setSelectedIndex(-1);
-        jcbProveedor.setSelectedItem(null);
-        jcbProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbProveedorActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "PROVEEDOR", "PRODUCTO", "PRECIO", "CANTIDAD"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jcbProveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jcbcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jcbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcbcompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -128,55 +125,45 @@ public class TodasLasComprasAUnProveedor extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jcbProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProveedorActionPerformed
-       
-    Proveedor proSeleccionado = (Proveedor) jcbProveedor.getSelectedItem();
-    if (proSeleccionado == null) {
+    private void jcbcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbcompraActionPerformed
+        Compra comSeleccionado = (Compra) jcbcompra.getSelectedItem();
+    if (comSeleccionado == null) {
         return;
     }
 
     listaD = (ArrayList<DetalleCompra>) deData.obtenerDetalles();
 
     DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("IdProveedor");
-    modelo.addColumn("Producto");
-    modelo.addColumn("Precio");
-    modelo.addColumn("Cantidad");
-
-    int contadorCompras = 0;
+    modelo.addColumn("ID");
+    modelo.addColumn("PROVEEDOR");
+    modelo.addColumn("PRODUCTO");
+    modelo.addColumn("PRECIO");
+    modelo.addColumn("CANTIDAD");
 
     for (DetalleCompra d : listaD) {
-        if (d.getCompra().getProveedor().getIdProveedor() == proSeleccionado.getIdProveedor()) {
-            int idProveedor = d.getCompra().getProveedor().getIdProveedor();
+        if (d.getCompra().getIdCompra() == comSeleccionado.getIdCompra()) {
+            String razonSocial = d.getCompra().getProveedor().getRazonSocial(); // Obtener la razón social del proveedor
             String nombreProducto = d.getProducto().getNombreProducto();
             double precio = d.getPrecioCosto();
             int cantidad = d.getCantidad();
 
-            modelo.addRow(new Object[]{idProveedor, nombreProducto, precio, cantidad});
-
-            contadorCompras++;
+            modelo.addRow(new Object[]{comSeleccionado.getIdCompra(), razonSocial, nombreProducto, precio, cantidad});
         }
     }
 
     jTable1.setModel(modelo);
-
-    JOptionPane.showMessageDialog(this, "Se le compró " + contadorCompras + " veces al proveedor con IdProveedor: " + proSeleccionado.getIdProveedor());
-
-
-    }//GEN-LAST:event_jcbProveedorActionPerformed
-
-
-
-public void cargarProveedor(){
-        for (Proveedor item:listaP){
-            jcbProveedor.addItem(item);
+    }//GEN-LAST:event_jcbcompraActionPerformed
+public void cargarcompra(){
+        for (Compra item:listcom){
+            jcbcompra.addItem(item);
         }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<Proveedor> jcbProveedor;
+    private javax.swing.JComboBox<Compra> jcbcompra;
     // End of variables declaration//GEN-END:variables
 }

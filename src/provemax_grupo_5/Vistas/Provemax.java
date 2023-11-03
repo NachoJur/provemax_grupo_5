@@ -50,6 +50,8 @@ public class Provemax extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMProductos = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMProveedores = new javax.swing.JMenu();
         jMIRegistroProv = new javax.swing.JMenuItem();
         pXNombre = new javax.swing.JMenu();
@@ -114,6 +116,22 @@ public class Provemax extends javax.swing.JFrame {
             }
         });
         jMProductos.add(jMenuItem2);
+
+        jMenuItem5.setText("Productos de un compra");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMProductos.add(jMenuItem5);
+
+        jMenuItem6.setText("Productos por fecha");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMProductos.add(jMenuItem6);
 
         jMenuBar1.add(jMProductos);
 
@@ -248,6 +266,24 @@ public class Provemax extends javax.swing.JFrame {
         escritorio.moveToFront(tcp);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Todoslosproductosdeunacompraenparticular tpc = new Todoslosproductosdeunacompraenparticular();
+        tpc.setVisible(true);
+        escritorio.add(tpc);
+        escritorio.moveToFront(tpc);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        Todoslosproductosdeunacompraenunafechaespecífica pxf = new Todoslosproductosdeunacompraenunafechaespecífica();
+        pxf.setVisible(true);
+        escritorio.add(pxf);
+        escritorio.moveToFront(pxf);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -299,6 +335,8 @@ public class Provemax extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jmiProdFecha;
     private javax.swing.JMenu pXNombre;
     // End of variables declaration//GEN-END:variables
