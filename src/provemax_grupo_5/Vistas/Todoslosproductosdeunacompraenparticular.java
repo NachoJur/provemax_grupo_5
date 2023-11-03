@@ -142,7 +142,7 @@ public class Todoslosproductosdeunacompraenparticular extends javax.swing.JInter
 
     for (DetalleCompra d : listaD) {
         if (d.getCompra().getIdCompra() == comSeleccionado.getIdCompra()) {
-            String razonSocial = d.getCompra().getProveedor().getRazonSocial(); // Obtener la razón social del proveedor
+            String razonSocial = d.getCompra().getProveedor().getRazonSocial(); 
             String nombreProducto = d.getProducto().getNombreProducto();
             double precio = d.getPrecioCosto();
             int cantidad = d.getCantidad();
